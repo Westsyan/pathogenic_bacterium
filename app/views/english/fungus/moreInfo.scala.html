@@ -1,0 +1,249 @@
+@import utils.fungusData
+@(fungus: fungusData)(implicit session: Session)
+@english.home.main("") {
+
+
+    <style>
+            th {
+                width: 25%;
+            }
+
+            .notes {
+                margin-left: 100px;
+                margin-right: 10px;
+            }
+    </style>
+
+    <div class="row">
+        <div class="form-group col-sm-12">
+            <h2 class="page-heading"
+            style="text-align: left;
+                border-bottom: 5px solid #e9f3f4">Fungus Information</h2>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered" style="table-layout: fixed;
+            word-wrap: break-word">
+            <tbody id="info">
+
+                <tr>
+                    <th>名称</th>
+                    <td><i>@fungus.name</i></td>
+                </tr>
+
+                <tr>
+                    <th>中文名</th>
+                    <td>@fungus.chinese</td>
+                </tr>
+
+                <tr>
+                    <th>目（order）</th>
+                    <td>@fungus.order</td>
+                </tr>
+
+                <tr>
+                    <th>科（family）</th>
+                    <td>@fungus.family</td>
+                </tr>
+
+                <tr>
+                    <th>属（genus）</th>
+                    <td>@fungus.genus</td>
+                </tr>
+
+                <tr>
+                    <th>种（species）</th>
+                    <td>@fungus.species</td>
+                </tr>
+
+                    <tr>
+                        <th>是否感染人</th>
+                        <td>@fungus.isPeople</td>
+                    </tr>
+
+
+                    <tr>
+                        <th>是否感染动物</th>
+                        <td>@fungus.isAnimal</td>
+                    </tr>
+
+
+                    <tr>
+                        <th>是否感染植物</th>
+                        <td>@fungus.isPlant</td>
+                    </tr>
+
+                    <tr>
+                        <th>传播途径</th>
+                        <td>@fungus.tranRoute</td>
+                    </tr>
+
+                    <tr>
+                        <th>感染剂量</th>
+                        <td>@fungus.infectiveDose</td>
+                    </tr>
+
+                    <tr>
+                        <th>体外存活条件</th>
+                        <td>@fungus.survivalCondition</td>
+                    </tr>
+
+                    <tr>
+                        <th>有效消毒剂</th>
+                        <td>@fungus.isSanitizer</td>
+                    </tr>
+
+                    <tr>
+                        <th>预后/死亡率</th>
+                        <td>@fungus.deathRate</td>
+                    </tr>
+
+                    <tr>
+                        <th>有效治疗药物</th>
+                        <td>@fungus.isMedicine</td>
+                    </tr>
+
+                    <tr>
+                        <th>疫苗</th>
+                        <td>@fungus.isVaccine</td>
+                    </tr>
+
+                    <tr>
+                        <th>CHINA Risk</th>
+                        <td>@fungus.chinaRisk
+                            @if(!fungus.chinaNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @fungus.canadaNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>USA NIH Risk</th>
+                        <td>@fungus.usanihRisk
+                            @if(!fungus.usanihNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @fungus.usanihNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>USA BMBL Risk</th>
+                        <td>@fungus.usabmblRisk
+                            @if(!fungus.usabmblNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @fungus.usabmblNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>Australia/New Zealand</th>
+                        <td>@fungus.australiaNewzealandRisk
+                            @if(!fungus.australiaNewzealandNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @fungus.australiaNewzealandNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>BELGIUM Risk</th>
+                        <td>@fungus.belgiumRisk
+                            @if(!fungus.belgiumNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @fungus.belgiumNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>CANADA Risk</th>
+                        <td>@fungus.canadaRisk
+                            @if(!fungus.canadaNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @fungus.canadaNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>EU Risk</th>
+                        <td>@fungus.euRisk
+                            @if(!fungus.euNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @fungus.euNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>GERMANY Risk</th>
+                        <td>@fungus.germanyRisk
+                            @if(!fungus.germanyNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @fungus.germanyNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>JAPAN Risk</th>
+                        <td>@fungus.japanRisk
+                            @if(!fungus.japanNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @fungus.japanNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>Singapore Risk</th>
+                        <td>@fungus.singaporeRisk
+                            @if(!fungus.singaporeNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @fungus.singaporeNotes
+                            }
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <th>SWITZERLAND Risk</th>
+                        <td>@fungus.switzerlandRisk
+                            @if(!fungus.switzerlandNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @fungus.switzerlandNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>UK Risk</th>
+                        <td>@fungus.ukRisk
+                            @if(!fungus.ukNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @fungus.ukNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>Select Agent CDC</th>
+                        <td>@fungus.selectAgentCdc</td>
+                    </tr>
+
+                    <tr>
+                        <th>Select Agent USDA</th>
+                        <td>@fungus.selectAgentUsda</td>
+                    </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+}

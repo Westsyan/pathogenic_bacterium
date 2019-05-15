@@ -1,0 +1,219 @@
+@()(implicit session: Session)
+@english.home.main("Home") {
+
+    <style>
+            .thumbnail {
+                height: 200px;
+            }
+
+            .thumbnail > .row {
+                margin-top: 12px;
+            }
+
+            .index-text {
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+
+
+    </style>
+    <div class="row">
+        <div class="col-md-9">
+
+
+            <div class="index-text">
+
+                <p class="text-justify">
+
+                    Pathogenicity is the potential disease-causing capacity of pathogens. Pathogenicity is related to
+                    virulence in meaning, but some authorities have come to distinguish it as a qualitative term,
+                    whereas the latter is quantitative. By this standard, an organism may be said to be pathogenic or
+                    non-pathogenic in a particular context, but not "more pathogenic" than another. Such comparisons are
+                    described instead in terms of relative virulence. Pathogenicity is also distinct from the
+                    transmissibility of the virus, which quantifies the risk of infection.
+                </p>
+                <p class="text-justify">
+                    A pathogen may be described in terms of its ability to produce toxins, enter tissue, colonize,
+                    hijack nutrients, and its ability to immunosuppress the host.
+                </p>
+
+
+            </div>
+
+
+            <div class="panel panel-default" style="margin-top: 15px;">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-database"></i> Resources</h3>
+
+
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="@routes.Assets.at("images/bacteria.jpg")" class="index-icon">
+                                        <a href="@routes.BacteriaController.toBrowse()" target="_blank"
+                                        class="btn btn-success btn-jump" role="button"><i class="fa fa-hand-o-right"></i>
+                                            View</a>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -25px">
+                                        <h3>Bacteria</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="@routes.Assets.at("images/virus.jpg")" class="index-icon">
+                                        <a href="@routes.VirusController.toBrowse()" target="_blank"
+                                        class="btn btn-success btn-jump" role="button"><i class="fa fa-hand-o-right"></i>
+                                            View</a>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -25px">
+                                        <h3>Virus</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="@routes.Assets.at("images/fungus.jpg")" class="index-icon">
+                                        <a href="@routes.FungusController.browse()" target="_blank"
+                                        class="btn btn-success btn-jump" role="button"><i class="fa fa-hand-o-right"></i>
+                                            View</a>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -25px">
+                                        <h3>Fungus</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="@routes.Assets.at("images/parasite.jpg")" class="index-icon">
+                                        <a href="@routes.ParasiteController.browse()" target="_blank"
+                                        class="btn btn-success btn-jump" role="button"><i class="fa fa-hand-o-right"></i>
+                                            View</a>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -25px">
+                                        <h3>Parasite</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="@routes.Assets.at("images/risk.jpg")" class="index-icon">
+                                        <a href="@routes.BacteriaController.toRandomForest()" target="_blank"
+                                        class="btn btn-success btn-jump" role="button"><i class="fa fa-hand-o-right"></i>
+                                            View</a>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -25px">
+                                        <h3>Risk evalution</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="@routes.Assets.at("images/tree.png")" class="index-icon">
+                                        <a href="@routes.TreeController.tree()" target="_blank"
+                                        class="btn btn-success btn-jump" role="button"><i class="fa fa-hand-o-right"></i>
+                                            View</a>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -25px">
+                                        <h3>Taxonomy tree</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+
+            <div align="center" style="margin-top: 20px">
+                <a href="" target="_blank"
+                style="text-align: center">
+                    <img src="@routes.Assets.at("images/title.png")" width="95%" style="margin-bottom: 20px">
+                </a>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-search"></i> Search</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" id="form"
+                    accept-charset="UTF-8" method="get" action="/english/Search/searchBefore">
+                        <input type="text" style="float: left;height: 40px;" class="form-control" placeholder="Keyword" name="input">
+                        <button type="submit"
+                        style="float: left;
+                            background-color: transparent;
+                            border: transparent;
+                            float: right;
+                            margin-top: -31px;
+                            margin-right: 5px;"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-cube"></i> Data Statistics</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-chevron-circle-right"></i> Bacteria samples: 1072</li>
+                        <li><i class="fa fa-chevron-circle-right"></i> Virus samples: 450</li>
+                        <li><i class="fa fa-chevron-circle-right"></i> Fungus samples: 141</li>
+                        <li><i class="fa fa-chevron-circle-right"></i> Parasite samples: 164</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-bookmark"></i> Release Notes</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-chevron-circle-right"></i>
+                            Pathogen database and standardized evaluation system is available online on November 2018.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <footer>
+    @english.home.footer()
+    </footer>
+
+
+}

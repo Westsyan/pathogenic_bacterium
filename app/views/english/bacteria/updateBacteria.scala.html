@@ -1,0 +1,151 @@
+@import utils.bacteriaData
+@(b:bacteriaData)(implicit session: Session)
+@english.home.main(""){
+
+  <div class="row">
+    <div class="form-group col-sm-12">
+      <h2 class="page-heading"
+      style="text-align: left;
+        border-bottom: 5px solid #e9f3f4;
+        letter-spacing: 0px"><font style="font-size: 30px">Bacteria Update</font></h2>
+    </div>
+  </div>
+
+
+
+  <form class="registration-form form-horizontal" id="UploadForm"
+  style="margin: 20px;">
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">名称</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="name" id="name">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">中文名</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="chinese" id="chinese">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">目（order）</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="order" id="order">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">亚目（Suborder）</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="suborder" id="suborder">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">科（family）</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="family" id="family">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">属（genus）</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="genus" id="genus">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">种（species）</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="species" id="species">
+      </div>
+    </div>
+
+
+    @english.share.risk()
+
+    <div class="form-group col-sm-12">
+      <div class="actions col-sm-offset-3 col-sm-3">
+        <button type="button" class="btn btn-primary" style="width: 80%;
+          margin-top: 5px" id="search" onclick="Update()">
+          Upload</button>
+      </div>
+    </div>
+
+  </form>
+
+
+  <script>
+
+    $(function () {
+        $("#name").val("@b.name");
+        $("#chinese").val("@b.chinese");
+        $("#order").val("@b.order");
+        $("#suborder").val("@b.suborder");
+        $("#family").val("@b.family");
+        $("#species").val("@b.species");
+        $("#genus").val("@b.genus");
+        $("#isPeople").val("@b.isPeople");
+        $("#isAnimal").val("@b.isAnimal");
+        $("#isPlant").val("@b.isPlant");
+        $("#tranRoute").val("@b.tranRoute");
+        $("#infectiveDose").val("@b.infectiveDose");
+        $("#survivalCondition").val("@b.survivalCondition");
+        $("#isSanitizer").val("@b.isSanitizer");
+        $("#deathRate").val("@b.deathRate");
+        $("#isMedicine").val("@b.isMedicine");
+        $("#isVaccine").val("@b.isVaccine");
+        $("#chinaRisk").val("@b.chinaRisk");
+        $("#chinaNotes").val("@b.chinaNotes");
+        $("#usanihRisk").val("@b.usanihRisk");
+        $("#usanihNotes").val("@b.usanihNotes");
+        $("#usabmblRisk").val("@b.usabmblRisk");
+        $("#usabmblNotes").val("@b.usabmblNotes");
+        $("#australiaNewzealandRisk").val("@b.australiaNewzealandRisk");
+        $("#australiaNewzealandNotes").val("@b.australiaNewzealandNotes");
+        $("#belgiumRisk").val("@b.belgiumRisk");
+        $("#belgiumNotes").val("@b.belgiumNotes");
+        $("#canadaRisk").val("@b.canadaRisk");
+        $("#canadaNotes").val("@b.canadaNotes");
+        $("#euRisk").val("@b.euRisk");
+        $("#euNotes").val("@b.euNotes");
+        $("#germanyRisk").val("@b.germanyRisk");
+        $("#germanyNotes").val("@b.germanyNotes");
+        $("#japanRisk").val("@b.japanRisk");
+        $("#japanNotes").val("@b.japanNotes");
+        $("#singaporeRisk").val("@b.singaporeRisk");
+        $("#singaporeNotes").val("@b.singaporeNotes");
+        $("#switzerlandRisk").val("@b.switzerlandRisk");
+        $("#switzerlandNotes").val("@b.switzerlandNotes");
+        $("#ukRisk").val("@b.ukRisk");
+        $("#ukNotes").val("@b.ukNotes");
+        $("#selectAgentCdc").val("@b.selectAgentCdc");
+        $("#selectAgentUsda").val("@b.selectAgentUsda");
+    });
+
+    function Update() {
+      var index = layer.load(1);
+      $.ajax({
+        url:"/english/admin/Bacteria/updateBacteria?id=@b.id",
+        type:"post",
+        data:$("#UploadForm").serialize(),
+        success:function (data) {
+          layer.close(index);
+          if(data.valid == "false"){
+              swal("更新失败",data.message,"error")
+          }else{
+              swal("\n","更新成功","success")
+          }
+        }
+      })
+    }
+
+  </script>
+
+
+
+}

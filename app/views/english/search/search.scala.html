@@ -1,0 +1,157 @@
+@(input: String)(implicit session: Session)
+@english.home.main("") {
+
+    <style>
+
+            .fixed-table-container {
+                border: none;
+            }
+
+            .table > tbody > tr > td {
+                border: none;
+            }
+
+            .bootstrap-table .table {
+                border: none;
+            }
+
+            .result-border {
+                border: 1px solid #dbe3e7;
+                padding: 20px 20px 0px 20px;
+                border-radius: 5px;
+            }
+
+            .type-right {
+                float: right;
+                border-radius: 5px;
+                background-color: #F1F1F1;
+            }
+    </style>
+
+    <div align="center">
+        <div style="width: 80%;">
+
+            <div style="margin-top: 50px">
+
+                <form  class="registration-form form-horizontal" id="form"
+                accept-charset="UTF-8" method="get" action="/english/Search/searchBefore">
+                    <h1>Search</h1>
+                    <input type="text" class="form-control" name="input" style="height: 40px;
+                        float: left" placeholder="Keyword">
+
+                    <button style="float: left;
+                        background-color: transparent;
+                        border: transparent;
+                        float: right;
+                        margin-top: -31px;
+                        margin-right: 10px;" type="submit">
+                        <i class="fa fa-search" style="font-size: 20px"></i>
+                    </button>
+                </form>
+
+            </div>
+            <br>
+            <br>
+            <br>
+
+            <hr style="border: 1px solid #e9f3f4;">
+
+            <div style="padding-top: 10px;">
+                <div align="left" style="font-size: 20px;"><b>Keyword : </b><span>@input</span></div>
+
+                <ul class="nav nav-tabs" style="margin-top: 20px">
+                    <li role="presentation" id="paste-tab" class="active"><a data-toggle="tab" onclick="Filter('All')">
+                        All</a></li>
+                    <li role="presentation" id="upload-tab"><a data-toggle="tab" onclick="Filter('bacteria')">
+                        Bacteria</a></li>
+                    <li role="presentation" id="upload-tab"><a data-toggle="tab" onclick="Filter('virus')">Virus</a></li>
+                    <li role="presentation" id="upload-tab"><a data-toggle="tab" onclick="Filter('fungus')">Fungus</a></li>
+                    <li role="presentation" id="upload-tab"><a data-toggle="tab" onclick="Filter('parasite')">
+                        Parasite</a></li>
+                </ul>
+
+                <table id="table" class="table" data-pagination="true" data-page-list="[5,10]" data-page-size="5"
+                style="margin-top: 20px"></table>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+        var datas = [];
+
+            $(function () {
+
+                $("#table").bootstrapTable({
+                    showHeader: false,
+                    columns: [{
+                        field: "result",
+                        formatter: function (value, row, index) {
+                            var link ="";
+                            if(row.type == "bacteria"){
+                                link = "/english/Becteria/moreInfo?id=" + row.id
+                            }else if(row.type == "virus"){
+                                link = "/english/Virus/moreInfo?id=" + row.id
+                            }else if(row.type == "fungus"){
+                                link = "/english/Fungus/moreInfo?id=" + row.id
+                            }else if(row.type == "parasite"){
+                                link = "/english/Parasite/moreInfo?id=" + row.id
+                            }
+
+                            var main = "<div class='result-border'><a href='" + link + "' target='_blank'>" + row.name + "</a><span class='type-right'>" +
+                                    "&nbsp;" + row.type + "&nbsp;</span><hr>";
+                            var option = "";
+                            $.each(row.result, function (i, v) {
+                                option += "<p style='font-size: 12px'><b>" + v.option + " ：</b> " + v.result + "</p>";
+                            });
+
+                            var html = main + option + "</div>";
+
+                            return html;
+                        }
+                    }]
+                });
+
+                $.ajax({
+                    url: "/english/Search/search?input=@input",
+                    type: "post",
+                    success: function (data) {
+                        datas = data;
+                        Filter("All");
+                    }
+                })
+
+
+
+            });
+
+
+            function Filter(obj) {
+                var re = [];
+                if (obj == "All") {
+                    re = datas;
+                } else {
+                    $.each(datas, function (i, v) {
+                        if (v.type == obj) {
+                            re.push(v)
+                        }
+                    });
+                }
+                $("#table").bootstrapTable("load", re);
+            }
+
+
+
+            function Search(obj) {
+                $.ajax({
+                    url: "/english/Search/search?types=" + obj + "&input=@input",
+                    type: "post",
+                    success: function (data) {
+                        $("#table").bootstrapTable("load", data);
+                    }
+                })
+            }
+
+    </script>
+}

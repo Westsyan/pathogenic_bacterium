@@ -1,0 +1,68 @@
+@()(implicit session: Session)
+@english.home.main(""){
+
+  <style>
+    tr{
+      text-align: center;
+    }
+
+    th{
+      text-align: center;
+    }
+  </style>
+
+  <div class="row">
+    <div class="form-group col-sm-12">
+      <h2 class="page-heading"
+      style="text-align: left;
+        border-bottom: 5px solid #e9f3f4">Mean Decrease Gini</h2>
+    </div>
+  </div>
+
+
+  <div id="showTable">
+
+    <div id="toolbar"></div>
+
+    <table class="display table table-bordered" id="table" data-search="true"
+    data-toolbar="#toolbar" data-search-align="left" data-multiple-search="true"
+    data-show-export="true" data-export-types="['excel','txt']" data-export-data-type="all"
+    >
+      <thead>
+        <tr>
+          <th data-field="country" data-sortable="true">国家</th>
+          <th data-field="is_breath" data-sortable="true">是否呼吸道传播</th>
+          <th data-field="is_people" data-sortable="true">是否人人之间传播</th>
+          <th data-field="is_100" data-sortable="true">感染剂量是否小于100个病原</th>
+          <th data-field="is_24" data-sortable="true">是否可以在自然条件下存活超过24小时</th>
+          <th data-field="is_medicine" data-sortable="true">是否没有有效治疗药物</th>
+          <th data-field="is_vaccine" data-sortable="true">是否没有有效的预防性疫苗</th>
+          <th data-field="death" data-sortable="true">死亡率</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <script>
+
+          $(function () {
+
+              $.ajax({
+                url:"@routes.RiskController.getGiniJson()",
+                type:"post",
+                success:function (data) {
+                  $("#table").bootstrapTable({data:data})
+                }
+              })
+
+
+          });
+
+  </script>
+
+
+}

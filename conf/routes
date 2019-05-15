@@ -1,0 +1,109 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET           /                                                   controllers.IndexController.home
+
+GET           /english/Bacteria/insertBacteria                    controllers.BacteriaController.insertBacteria
+GET           /english/Becteria/getAllInfo                        controllers.BacteriaController.getAllInfo
+GET           /english/Becteria/searchByTaxBefore                 controllers.BacteriaController.searchByTaxBefore
+GET           /english/Becteria/getAllSelect                      controllers.BacteriaController.getAllSelect
+GET           /english/Becteria/searchByTax                       controllers.BacteriaController.searchByTax
+GET           /english/Becteria/moreInfo                          controllers.BacteriaController.moreInfo(id:Int)
+POST          /english/Becteria/getByOrder                        controllers.BacteriaController.getByOrder(order:String)
+POST          /english/Becteria/getByFamily                       controllers.BacteriaController.getByFamily(family:String)
+POST          /english/Becteria/getByGenus                        controllers.BacteriaController.getByGenus(genus:String)
+GET           /english/admin/Bacteria/uploadBefore                controllers.BacteriaController.uploadBefore
+POST          /english/admin/Bacteria/uploadBacteria              controllers.BacteriaController.uploadBacteria
+GET           /english/admin/Bacteria/manageBacteriaBefore        controllers.BacteriaController.manageBacteriaBefore
+GET           /english/admin/Bacteria/updateBefore                controllers.BacteriaController.updateBefore(id:Int)
+POST          /english/admin/Bacteria/updateBacteria              controllers.BacteriaController.updateBacteria(id:String)
+DELETE        /english/admin/Bacteria/deleteBacteria              controllers.BacteriaController.deleteBacteria(id:Int)
+
+GET           /english/login                                      controllers.IndexController.login
+
+POST          /english/background/updatePassword                  controllers.IndexController.updatePassword
+GET           /english/background/getPassword                     controllers.IndexController.getPassword(password:String)
+
+GET           /english/Virus/insertVirus                          controllers.VirusController.insertVirus
+POST          /english/Virus/getTreeJson                          controllers.VirusController.getTreeJson
+GET           /english/Virus/getInfoById                          controllers.VirusController.getInfoById(id:Int)
+GET           /english/Virus/getAllVirus                          controllers.VirusController.getAllVirus
+GET           /english/Virus/getAllOrder                          controllers.VirusController.getAllOrder
+GET           /english/Virus/getAllFamily                         controllers.VirusController.getAllFamily
+GET           /english/Virus/getAllGenus                          controllers.VirusController.getAllGenus
+GET           /english/Virus/getAllSpecies                        controllers.VirusController.getAllSpecies
+GET           /english/Virus/searchByTax                          controllers.VirusController.searchByTax
+POST          /english/Virus/getByOrder                           controllers.VirusController.getByOrder(order:String)
+POST          /english/Virus/getByFamily                          controllers.VirusController.getByFamily(family:String)
+GET           /english/admin/Virus/manageBefore                   controllers.VirusController.manageBefore
+GET           /english/admin/Virus/uploadBefore                   controllers.VirusController.uploadBefore
+POST          /english/admin/Virus/uploadVirus                    controllers.VirusController.uploadVirus
+GET           /english/admin/Virus/updateBefore                   controllers.VirusController.updateBefore(id:Int)
+POST          /english/admin/Virus/updateVirus                    controllers.VirusController.updateVirus(id:String)
+DELETE        /english/admin/Virus/deleteVirus                    controllers.VirusController.deleteVirus(id:Int)
+
+
+GET           /english/background/toAdmin                         controllers.IndexController.toAdmin
+GET           /english/toLogin                                    controllers.IndexController.toLogin
+GET           /english/logout                                     controllers.IndexController.logout
+
+GET           /english/background/toPassword                      controllers.IndexController.toPassword
+
+
+GET           /english/Bacteria/toBrowse                          controllers.BacteriaController.toBrowse
+GET           /english/Bacteria/toRandomForest                    controllers.BacteriaController.toRandomForest
+GET           /english/Bacteria/randomForest                      controllers.BacteriaController.runRandomForest
+
+
+GET           /english/Virus/toTree                               controllers.VirusController.toTree
+GET           /english/Virus/toBrowse                             controllers.VirusController.toBrowse
+GET           /english/Virus/toSearchByTax                        controllers.VirusController.toSearchByTax
+GET           /english/Virus/moreInfo                             controllers.VirusController.moreInfo(id:Int)
+
+GET           /english/Parasite/getAllParasite                    controllers.ParasiteController.getAllParasite
+GET           /english/Parasite/Browse                            controllers.ParasiteController.browse
+GET           /english/Parasite/moreInfo                          controllers.ParasiteController.moreInfo(id:Int)
+GET           /english/Parasite/searchByTaxBefore                 controllers.ParasiteController.searchByTaxBefore
+GET           /english/Parasite/getAllSelect                      controllers.ParasiteController.getAllSelect
+GET           /english/Parasite/searchByTax                       controllers.ParasiteController.searchByTax
+POST          /english/Parasite/getByOrder                        controllers.ParasiteController.getByOrder(order:String)
+POST          /english/Parasite/getByFamily                       controllers.ParasiteController.getByFamily(family:String)
+GET           /english/admin/Parasite/manageBefore                controllers.ParasiteController.manageBefore
+GET           /english/admin/Parasite/uploadBefore                controllers.ParasiteController.uploadBefore
+POST          /english/admin/Parasite/uploadParasite              controllers.ParasiteController.uploadParasite
+GET           /english/admin/Parasite/updateBefore                controllers.ParasiteController.updateBefore(id:Int)
+POST          /english/admin/Parasite/updateParasite              controllers.ParasiteController.updateParasite(id:String)
+DELETE        /english/admin/Parasite/deleteParasite              controllers.ParasiteController.deleteParasite(id:Int)
+
+GET           /english/Fungus/getAllFungus                        controllers.FungusController.getAllFungus
+GET           /english/Fungus/Browse                              controllers.FungusController.browse
+GET           /english/Fungus/moreInfo                            controllers.FungusController.moreInfo(id:Int)
+GET           /english/Fungus/searchByTaxBefore                   controllers.FungusController.searchByTaxBefore
+GET           /english/Fungus/getAllSelect                        controllers.FungusController.getAllSelect
+GET           /english/Fungus/searchByTax                         controllers.FungusController.searchByTax
+POST          /english/Fungus/getByOrder                          controllers.FungusController.getByOrder(order:String)
+POST          /english/Fungus/getByFamily                         controllers.FungusController.getByFamily(family:String)
+GET           /english/admin/Fungus/manageBefore                  controllers.FungusController.manageBefore
+GET           /english/admin/Fungus/uploadBefore                  controllers.FungusController.uploadBefore
+POST          /english/admin/Fungus/uploadFungus                  controllers.FungusController.uploadFungus
+GET           /english/admin/Fungus/updateBefore                  controllers.FungusController.updateBefore(id:Int)
+POST          /english/admin/Fungus/updateFungus                  controllers.FungusController.updateFungus(id:String)
+DELETE        /english/admin/Fungus/deleteFungus                  controllers.FungusController.deleteFungus(id:Int)
+
+GET           /english/admin/Risk/meanDecreaseGini                controllers.RiskController.meanDecreaseGini
+POST          /english/admin/Risk/getGiniJson                     controllers.RiskController.getGiniJson
+
+
+GET           /english/Tree/tree                                  controllers.TreeController.tree
+POST          /english/Tree/getTreeJson                           controllers.TreeController.getTreeJson
+GET           /english/Tree/getInfoById                           controllers.TreeController.getInfoById(id:Int,sample:String)
+
+GET           /english/Search/searchBefore                        controllers.SearchController.searchBefore(input:String)
+POST          /english/Search/search                              controllers.SearchController.search(input:String)
+
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET           /assets/*file                                       controllers.Assets.at(path="/public", file)

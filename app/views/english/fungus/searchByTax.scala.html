@@ -1,0 +1,209 @@
+@()(implicit session: Session)
+@english.home.main("Search By Taxonomic Information"){
+
+
+  <div class="row">
+    <div class="form-group col-sm-12">
+      <h2 class="page-heading"
+      style="text-align: left;
+        border-bottom: 5px solid #e9f3f4">Search By Taxonomic Information</h2>
+    </div>
+  </div>
+
+
+  <form class="registration-form form-horizontal" id="form"
+  accept-charset="UTF-8" method="post">
+
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-4">Order:</label>
+        <div class="col-sm-8">
+          <select name="order" id="order" class="checkbox form-control" onchange="changeOrder(this)" ></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-4">Family:</label>
+        <div class="col-sm-8">
+          <select name="family" id="family" class="checkbox form-control" onchange="changeFamily(this)"></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-4">Genus:</label>
+        <div class="col-sm-8">
+          <select class="checkbox form-control" name="genus" id="genus"></select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-4">是否人人之间传播:</label>
+        <div class="col-sm-8">
+          <select class="checkbox form-control" name="isPeople" id="isPeople">
+            <option value="All" SELECTED>All</option>
+            <option value="是">是</option>
+            <option value="否">否</option>
+            <option value="未知">未知</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-4">传播途径:</label>
+        <div class="col-sm-8">
+          <input type="text" style="float: left;
+            height: 40px;" class="form-control" id="tranRoute" name="tranRoute">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="actions col-sm-offset-1 col-sm-2">
+        <button type="button" class="btn btn-primary" style="width: 90%;" id="search" onclick="mySearch()">搜索</button>
+      </div>
+    </div>
+  </form>
+
+  <div style="display: none;" id="showTable">
+    <hr>
+    <p><b>分类学信息：</b></p>
+    <div id="tax" class="checkbox"></div>
+    <p><b>条件：</b></p>
+    <div id="position" class="checkbox"></div>
+    <p><b>各国风险等级：</b></p>
+    <div id="risk" class="checkbox"></div>
+
+    <div id="toolbar"></div>
+
+    <table class="display table table-bordered" id="table" data-pagination="true" data-search="true"
+    data-toolbar="#toolbar" data-page-list="[10, 25, 50, 100, all]" data-search-align="left" data-multiple-search="true"
+    >
+      <thead>
+        <tr>
+          <th data-field="name" data-sortable="true">名称</th>
+          <th data-field="chinese" data-sortable="true">中文名</th>
+          <th data-field="order" data-sortable="true">目（order）</th>
+          <th data-field="family" data-sortable="true">科（family）</th>
+          <th data-field="genus" data-sortable="true">属（genus）</th>
+          <th data-field="species" data-sortable="true">种（species）</th>
+          <th data-field="isPeople" data-sortable="true">是否感染人</th>
+          <th data-field="isAnimal" data-sortable="true">是否感染动物</th>
+          <th data-field="isPlant" data-sortable="true">是否感染植物</th>
+          <th data-field="tranRoute" data-sortable="true">传播途径</th>
+          <th data-field="infectiveDose" data-sortable="true">感染剂量</th>
+          <th data-field="survivalCondition" data-sortable="true">体外存活条件</th>
+          <th data-field="isSanitizer" data-sortable="true">有效消毒剂</th>
+          <th data-field="deathRate" data-sortable="true">预后/死亡率</th>
+          <th data-field="isMedicine" data-sortable="true">有效治疗药物</th>
+          <th data-field="isVaccine" data-sortable="true">疫苗</th>
+          <th data-field="chinaRisk" data-sortable="true">中国（2006）</th>
+          <th data-field="usanihRisk" data-sortable="true">美国NIH (2016)</th>
+          <th data-field="usabmblRisk" data-sortable="true">美国BMBL (2009)*</th>
+          <th data-field="australiaNewzealandRisk" data-sortable="true">澳大利亚/新西兰 Australia/New Zealand  (2010)</th>
+          <th data-field="belgiumRisk" data-sortable="true">比利时 Belgium (2008)</th>
+          <th data-field="canadaRisk" data-sortable="true">加拿大 Canada (2015)</th>
+          <th data-field="euRisk" data-sortable="true">欧盟 EU (2000)</th>
+          <th data-field="germanyRisk" data-sortable="true">德国 Germany (2013)</th>
+          <th data-field="japanRisk" data-sortable="true">日本 Japan</th>
+          <th data-field="singaporeRisk" data-sortable="true">新加坡 Singapore</th>
+          <th data-field="switzerlandRisk" data-sortable="true">瑞士 Switzerland</th>
+          <th data-field="ukRisk" data-sortable="true">英国 UK (2013)</th>
+          <th data-field="selectAgentCdc" data-sortable="true">Select Agent CDC</th>
+          <th data-field="selectAgentUsda" data-sortable="true">Select Agent USDA</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+
+
+  <script src="@routes.Assets.at("javascripts/fungus.js")" type="text/javascript"></script>
+  <script>
+
+          $(function () {
+
+            $.ajax({
+              url: "@routes.FungusController.getAllSelect()",
+              type: "get",
+              success: function (data) {
+                $("#order").select2({data: data.order});
+                $("#family").select2({
+                  placeholder: "Please select order",
+                  allowClear: true
+                });
+                $("#genus").select2({
+                  placeholder: "Please select order and family",
+                  allowClear: true
+                });
+              }
+            });
+
+            $("#isPeople").select2();
+          });
+
+          function changeOrder(obj) {
+            var order = obj.value;
+            $.ajax({
+              url: "/english/Fungus/getByOrder?order=" + order,
+              type: "post",
+              success: function (data) {
+
+                if(order != "All"){
+                  $("#family").empty().select2({data: data.family});
+                }else{
+                  $("#family").empty().select2({
+                    placeholder: "Please select order",
+                    allowClear: true
+                  });
+                }
+
+                $("#genus").empty().select2({
+                  placeholder: "Please select order and family",
+                  allowClear: true
+                });
+
+              }
+            })
+          }
+
+          function changeFamily(obj) {
+            var family = obj.value;
+            $.ajax({
+              url: "/english/Fungus/getByFamily?family=" + family,
+              type: "post",
+              success: function (data) {
+                $("#genus").empty().select2({data: data.genus});
+              }
+            })
+          }
+
+          function mySearch() {
+            var index = layer.load(1);
+            $.ajax({
+              url: "@routes.FungusController.searchByTax()",
+              type: "get",
+              dataType: "json",
+              data: $("#form").serialize(),
+              success: function (data) {
+                layer.close(index);
+                $("#table").bootstrapTable({data:data});
+                $("#table").bootstrapTable('load',data);
+                $("#showTable").show();
+              }
+            });
+          }
+
+
+  </script>
+
+
+
+}
