@@ -24,9 +24,9 @@
     <div class="row">
         <div class="form-group col-sm-12" style="font-weight: bold;font-size: 14px;">
 
-            <p>对于库中未收录的病原微生物，可以根据病原微生物的特性，对其危害度等级进行预测。</p>
-            <p>本预测模型根据各国已知的病原微生物病原体危害度等级及其特性建立，可以根据病原微生物的特性，对库中未收入的病原微生物
-                的危害度等级进行预测，预测结果将给出不同国家可能的危害度等级。但预测结果不等同于各国的危害度等级，仅供参考。</p>
+            <p>For the pathogenic microorganisms not included in the library, the hazard level can be predicted according to the characteristics of the pathogenic microorganisms.</p>
+            <p>This prediction model is established based on the known pathogen hazard level and its characteristics of pathogenic microorganisms in various countries, and the uncollected pathogenic microorganisms in the library can be evaluated according to their characteristics
+                The hazard level of different countries will be given. However, the predicted results are not equivalent to the hazard level of each country, only for reference.</p>
 
         </div>
     </div>
@@ -36,15 +36,15 @@
 
         <div class="row">
             <div class="form-group col-sm-8">
-                <label class="control-label col-sm-5">是否呼吸道传播:</label>
+                <label class="control-label col-sm-5">Respiratory (droplet) transmission:</label>
                 <div class="col-sm-7">
                     <select class="form-control" name="is_breath" id="is_breath">
                         <option value="未知">
-                            未知</option>
+                            Unknown</option>
                         <option value="是">
-                            是</option>
+                            Yes</option>
                         <option value="否">
-                            否</option>
+                            No</option>
                     </select>
                 </div>
             </div>
@@ -52,15 +52,15 @@
 
         <div class="row">
             <div class="form-group col-sm-8">
-                <label class="control-label col-sm-5">是否人与人之间<span style="color: red;">水平</span>传播:</label>
+                <label class="control-label col-sm-5">Horizontal transmission:</label>
                 <div class="col-sm-7">
                     <select class="form-control" name="is_people" id="is_people">
                         <option value="未知">
-                            未知</option>
+                            Unknown</option>
                         <option value="是">
-                            是</option>
+                            Yes</option>
                         <option value="否">
-                            否</option>
+                            No</option>
                     </select>
                 </div>
             </div>
@@ -68,15 +68,15 @@
 
         <div class="row">
             <div class="form-group col-sm-8">
-                <label class="control-label col-sm-5">感染剂量是否<span style="color: red;">小于</span>100个病原:</label>
+                <label class="control-label col-sm-5">Infectious dose less than 100 pathogens:</label>
                 <div class="col-sm-7">
                     <select class="form-control" name="is_100" id="is_100">
                         <option value="未知">
-                            未知</option>
+                            Unknown</option>
                         <option value="是">
-                            是</option>
+                            Yes</option>
                         <option value="否">
-                            否</option>
+                            No</option>
                     </select>
                 </div>
             </div>
@@ -85,15 +85,15 @@
 
         <div class="row">
             <div class="form-group col-sm-8">
-                <label class="control-label col-sm-5">是否可以在自然条件下存活<span style="color: red;">超过</span>24小时:</label>
+                <label class="control-label col-sm-5">Pathogens can survive more than 24 hours under natural conditions:</label>
                 <div class="col-sm-7">
                     <select class="form-control" name="is_24" id="is_24">
                         <option value="未知">
-                            未知</option>
+                            Unknown</option>
                         <option value="是">
-                            是</option>
+                            Yes</option>
                         <option value="否">
-                            否</option>
+                            No</option>
                     </select>
                 </div>
             </div>
@@ -101,15 +101,15 @@
 
         <div class="row">
             <div class="form-group col-sm-8">
-                <label class="control-label col-sm-5">是否<span style="color: red;">没有</span>有效治疗药物:</label>
+                <label class="control-label col-sm-5">No effective treatments:</label>
                 <div class="col-sm-7">
                     <select class="form-control" name="is_medicine" id="is_medicine">
                         <option value="未知">
-                            未知</option>
+                            Unknown</option>
                         <option value="是">
-                            是</option>
+                            Yes</option>
                         <option value="否">
-                            否</option>
+                            No</option>
                     </select>
                 </div>
             </div>
@@ -117,13 +117,13 @@
 
         <div class="row">
             <div class="form-group col-sm-8">
-                <label class="control-label col-sm-5">是否<span style="color: red;">没有</span>有效的预防性疫苗:</label>
+                <label class="control-label col-sm-5">No effective preventive vaccine:</label>
                 <div class="col-sm-7">
                     <select class="form-control" name="is_vaccine" id="is_vaccine">
                         <option value="是">
-                            是</option>
+                            YES</option>
                         <option value="否">
-                            否</option>
+                            NO</option>
                     </select>
                 </div>
             </div>
@@ -133,7 +133,7 @@
 
         <div class="row">
             <div class="form-group col-sm-8">
-                <label class="control-label col-sm-5">死亡率:</label>
+                <label class="control-label col-sm-5">Mortality rate（%）:</label>
                 <div class="col-sm-7">
                     <select class="form-control" name="death" id="death">
                         <option value="<1">< 1%</option>
@@ -144,8 +144,8 @@
                         <option value="41-50">41%-50%</option>
                         <option value="51-60">51%-60%</option>
                         <option value="61-70">61%-70%</option>
-                        <option value="71-80">71%-80%</option>
-                        <option value="81-90">81%-90%</option>
+      @*                  <option value="71-80">71%-80%</option>
+                        <option value="81-90">81%-90%</option>*@
                         <option value="91-100">91%-100%</option>
                         <option value="100">100%</option>
                     </select>
@@ -157,7 +157,7 @@
         <div class="form-group">
             <div class="actions col-sm-offset-3 col-sm-2">
                 <button type="button" class="btn btn-primary" style="width: 90%;" id="search" onclick="myAnalysis()">
-                    分析</button>
+                    Analysis</button>
             </div>
         </div>
     </form>
@@ -168,34 +168,37 @@
         <table class="table table-bordered table-hover" id="table">
             <thead>
                 <tr>
-                    <th data-field="state">国家</th>
-                    <th data-field="china">中国（2006）</th>
-                    <th data-field="usa_nih">美国NIH (2016)</th>
-                    <th data-field="usa_bmbl">美国BMBL(2009)</th>
-                    <th data-field="australia">澳大利亚/新西兰 (2010)</th>
-                    <th data-field="belgium">比利时 (2008)</th>
-                    <th data-field="canada">加拿大(2015)</th>
-                    <th data-field="eu">欧盟(2000)</th>
-                    <th data-field="germany">德国 (2013)</th>
-                    <th data-field="japan">日本</th>
-                    <th data-field="singapore">新加坡</th>
-                    <th data-field="switzerland">瑞士</th>
-                    <th data-field="uk">英国 (2013)</th>
+                    <th data-field="state">State</th>
+                    <th data-field="china">CHINA（2006）</th>
+                    <th data-field="usa_nih">USA NIH (2016)</th>
+                    <th data-field="usa_bmbl">USA BMBL(2009)</th>
+                    <th data-field="australia">Australia/New Zealand (2010)</th>
+                    <th data-field="belgium">Belgium (2008)</th>
+                    <th data-field="canada">Canada(2015)</th>
+                    <th data-field="eu">EU(2000)</th>
+                    <th data-field="germany">Germany (2013)</th>
+                    <th data-field="japan">Japan</th>
+                    <th data-field="singapore">Singapore</th>
+                    <th data-field="switzerland">Switzerland</th>
+                    <th data-field="uk">UK (2013)</th>
 
 
                 </tr>
             </thead>
         </table>
 
-        <br>
-        <p><b>注：中国的风险等级与WHO相反，第一类、第二类微生物统称为高致病性微生物。</b></p>
-        <br>
 
+
+        <br>
 
         <div id="charts" style="border: 1px solid #ddd;
             padding-top: 20px">
             <br>
         </div>
+
+        <br>
+        @english.share.china()
+        <br>
 
     </div>
 
@@ -242,19 +245,20 @@
                         enabled: false
                     },
                     title: {
-                        text: "各国风险等级"
+                        text: "Risk levels of each country"
                     },
                     xAxis: {
                         title: {
-                            text: "国家"
+                            text: "Country"
                         },
-                        categories: ['中国（2006）', '美国NIH (2016)', '美国BMBL(2009)', '澳大利亚/新西兰 (2010)', '比利时 (2008)',
-                            '加拿大(2015)', '欧盟(2000)', '德国 (2013)', '日本', '新加坡', '瑞士', '英国 (2013)'],
+                        categories: ['CHINA（2006）', 'USA NIH (2016)', 'USA BMBL(2009)', 'Australia/New Zealand (2010)',
+                            'Belgium (2008)', 'Canada (2015)', 'EU (2000)', 'Germany (2013)', 'Japan', 'Singapore',
+                            'Switzerland', 'UK (2013)'],
                         crosshair: true
                     },
                     yAxis: {
                         title: {
-                            text: "风险等级"
+                            text: "Risk levels"
                         }
                     },
                     legend: {

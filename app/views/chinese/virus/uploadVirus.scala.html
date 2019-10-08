@@ -1,0 +1,110 @@
+@()(implicit session: Session)
+@chinese.home.main(""){
+
+  <div class="row">
+    <div class="form-group col-sm-12">
+      <h2 class="page-heading"
+      style="text-align: left;
+        border-bottom: 5px solid #e9f3f4;
+        letter-spacing: 0px"><font style="font-size: 30px">上传病毒信息</font></h2>
+    </div>
+  </div>
+
+
+
+  <form class="registration-form form-horizontal" id="UploadForm"
+  style="margin: 20px;">
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">名称</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="name" id="name">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">中文名</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="chinese" id="chinese">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">目</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="order" id="order">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">亚目</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="suborder" id="suborder">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">科</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="family" id="family">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">属</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="genus" id="genus">
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label class="control-label col-sm-5">种</label>
+      <div class="col-sm-7">
+        <input class="form-control" name="species" id="species">
+      </div>
+    </div>
+
+
+
+    @chinese.share.risk()
+
+
+
+    <div class="form-group col-sm-12">
+      <div class="actions col-sm-offset-3 col-sm-3">
+        <button type="button" class="btn btn-primary" style="width: 80%;
+          margin-top: 5px" id="search" onclick="Upload()">
+          上传</button>
+      </div>
+    </div>
+
+  </form>
+
+
+  <script>
+
+
+    function Upload() {
+        var index = layer.load(1);
+      $.ajax({
+        url:"@routes.VirusController.uploadVirus()",
+        type:"post",
+        data:$("#UploadForm").serialize(),
+        success:function (data) {
+          layer.close(index);
+          if(data.valid == "false"){
+              swal("上传失败",data.message,"error")
+          }else{
+              swal("\n","上传成功","success")
+          }
+        }
+      })
+    }
+
+
+
+  </script>
+
+
+
+}

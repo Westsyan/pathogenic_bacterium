@@ -1,6 +1,6 @@
 @import utils.fungusData
 @(fungus: fungusData)(implicit session: Session)
-@english.home.main("") {
+@english.home.main("Fungus Information") {
 
 
     <style>
@@ -28,89 +28,89 @@
             <tbody id="info">
 
                 <tr>
-                    <th>名称</th>
+                    <th>Name</th>
                     <td><i>@fungus.name</i></td>
                 </tr>
 
                 <tr>
-                    <th>中文名</th>
+                    <th>Chinese</th>
                     <td>@fungus.chinese</td>
                 </tr>
 
                 <tr>
-                    <th>目（order）</th>
+                    <th>Order</th>
                     <td>@fungus.order</td>
                 </tr>
 
                 <tr>
-                    <th>科（family）</th>
+                    <th>Family</th>
                     <td>@fungus.family</td>
                 </tr>
 
                 <tr>
-                    <th>属（genus）</th>
+                    <th>Genus</th>
                     <td>@fungus.genus</td>
                 </tr>
 
                 <tr>
-                    <th>种（species）</th>
+                    <th>Species</th>
                     <td>@fungus.species</td>
                 </tr>
 
                     <tr>
-                        <th>是否感染人</th>
+                        <th>Infected humans</th>
                         <td>@fungus.isPeople</td>
                     </tr>
 
 
                     <tr>
-                        <th>是否感染动物</th>
+                        <th>Infected animals</th>
                         <td>@fungus.isAnimal</td>
                     </tr>
 
 
                     <tr>
-                        <th>是否感染植物</th>
+                        <th>Infected plants</th>
                         <td>@fungus.isPlant</td>
                     </tr>
 
                     <tr>
-                        <th>传播途径</th>
+                        <th>Route of transmission</th>
                         <td>@fungus.tranRoute</td>
                     </tr>
 
                     <tr>
-                        <th>感染剂量</th>
+                        <th>Infective dose</th>
                         <td>@fungus.infectiveDose</td>
                     </tr>
 
                     <tr>
-                        <th>体外存活条件</th>
+                        <th>Vitro survival condition</th>
                         <td>@fungus.survivalCondition</td>
                     </tr>
 
                     <tr>
-                        <th>有效消毒剂</th>
+                        <th>Effective disinfectant</th>
                         <td>@fungus.isSanitizer</td>
                     </tr>
 
                     <tr>
-                        <th>预后/死亡率</th>
+                        <th>Mortality rate</th>
                         <td>@fungus.deathRate</td>
                     </tr>
 
                     <tr>
-                        <th>有效治疗药物</th>
+                        <th>Effective therapeutic agent</th>
                         <td>@fungus.isMedicine</td>
                     </tr>
 
                     <tr>
-                        <th>疫苗</th>
+                        <th>Vaccine</th>
                         <td>@fungus.isVaccine</td>
                     </tr>
 
                     <tr>
-                        <th>CHINA Risk</th>
+                        <th>CHINA (2006)</th>
                         <td>@fungus.chinaRisk
                             @if(!fungus.chinaNotes.isEmpty) {
                                 <b class="notes">notes:</b>
@@ -120,7 +120,7 @@
                     </tr>
 
                     <tr>
-                        <th>USA NIH Risk</th>
+                        <th>USA NIH (2016)</th>
                         <td>@fungus.usanihRisk
                             @if(!fungus.usanihNotes.isEmpty) {
                                 <b class="notes">notes:</b>
@@ -130,7 +130,7 @@
                     </tr>
 
                     <tr>
-                        <th>USA BMBL Risk</th>
+                        <th>USA BMBL (2009)*</th>
                         <td>@fungus.usabmblRisk
                             @if(!fungus.usabmblNotes.isEmpty) {
                                 <b class="notes">notes:</b>
@@ -140,7 +140,7 @@
                     </tr>
 
                     <tr>
-                        <th>Australia/New Zealand</th>
+                        <th>Australia/New Zealand (2010)</th>
                         <td>@fungus.australiaNewzealandRisk
                             @if(!fungus.australiaNewzealandNotes.isEmpty) {
                                 <b class="notes">notes:</b>
@@ -150,7 +150,7 @@
                     </tr>
 
                     <tr>
-                        <th>BELGIUM Risk</th>
+                        <th>Belgium (2008)</th>
                         <td>@fungus.belgiumRisk
                             @if(!fungus.belgiumNotes.isEmpty) {
                                 <b class="notes">notes:</b>
@@ -160,7 +160,7 @@
                     </tr>
 
                     <tr>
-                        <th>CANADA Risk</th>
+                        <th>Canada (2015)</th>
                         <td>@fungus.canadaRisk
                             @if(!fungus.canadaNotes.isEmpty) {
                                 <b class="notes">notes:</b>
@@ -170,7 +170,7 @@
                     </tr>
 
                     <tr>
-                        <th>EU Risk</th>
+                        <th>EU (2000)</th>
                         <td>@fungus.euRisk
                             @if(!fungus.euNotes.isEmpty) {
                                 <b class="notes">notes:</b>
@@ -180,7 +180,7 @@
                     </tr>
 
                     <tr>
-                        <th>GERMANY Risk</th>
+                        <th>Germany (2013)</th>
                         <td>@fungus.germanyRisk
                             @if(!fungus.germanyNotes.isEmpty) {
                                 <b class="notes">notes:</b>
@@ -190,7 +190,7 @@
                     </tr>
 
                     <tr>
-                        <th>JAPAN Risk</th>
+                        <th>Japan</th>
                         <td>@fungus.japanRisk
                             @if(!fungus.japanNotes.isEmpty) {
                                 <b class="notes">notes:</b>
@@ -200,7 +200,7 @@
                     </tr>
 
                     <tr>
-                        <th>Singapore Risk</th>
+                        <th>Singapore</th>
                         <td>@fungus.singaporeRisk
                             @if(!fungus.singaporeNotes.isEmpty) {
                                 <b class="notes">notes:</b>
@@ -212,7 +212,7 @@
 
 
                     <tr>
-                        <th>SWITZERLAND Risk</th>
+                        <th>Switzerland</th>
                         <td>@fungus.switzerlandRisk
                             @if(!fungus.switzerlandNotes.isEmpty) {
                                 <b class="notes">notes:</b>
@@ -222,7 +222,7 @@
                     </tr>
 
                     <tr>
-                        <th>UK Risk</th>
+                        <th>UK (2013)</th>
                         <td>@fungus.ukRisk
                             @if(!fungus.ukNotes.isEmpty) {
                                 <b class="notes">notes:</b>

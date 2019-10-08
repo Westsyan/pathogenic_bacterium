@@ -1,5 +1,5 @@
 @()(implicit session: Session)
-@english.home.main(""){
+@english.home.main("Mean Decrease Gini"){
 
   <style>
     tr{
@@ -30,14 +30,14 @@
     >
       <thead>
         <tr>
-          <th data-field="country" data-sortable="true">国家</th>
-          <th data-field="is_breath" data-sortable="true">是否呼吸道传播</th>
-          <th data-field="is_people" data-sortable="true">是否人人之间传播</th>
-          <th data-field="is_100" data-sortable="true">感染剂量是否小于100个病原</th>
-          <th data-field="is_24" data-sortable="true">是否可以在自然条件下存活超过24小时</th>
-          <th data-field="is_medicine" data-sortable="true">是否没有有效治疗药物</th>
-          <th data-field="is_vaccine" data-sortable="true">是否没有有效的预防性疫苗</th>
-          <th data-field="death" data-sortable="true">死亡率</th>
+          <th data-field="country" data-sortable="true">State</th>
+          <th data-field="is_breath" data-sortable="true">Respiratory (droplet) transmission</th>
+          <th data-field="is_people" data-sortable="true">Infected person</th>
+          <th data-field="is_100" data-sortable="true">Infectious dose less than 100 pathogens</th>
+          <th data-field="is_24" data-sortable="true">Pathogens can survive more than 24 hours under natural conditions</th>
+          <th data-field="is_medicine" data-sortable="true">No effective treatments</th>
+          <th data-field="is_vaccine" data-sortable="true">No effective preventive vaccine</th>
+          <th data-field="death" data-sortable="true">Mortality rate（%）</th>
         </tr>
       </thead>
     </table>

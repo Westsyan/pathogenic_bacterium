@@ -1,0 +1,216 @@
+@()(implicit session: Session)
+@chinese.home.main("主页") {
+
+    <style>
+            .thumbnail {
+                height: 200px;
+            }
+
+            .thumbnail > .row {
+                margin-top: 12px;
+            }
+
+            .index-text {
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+
+
+    </style>
+    <div class="row">
+        <div class="col-md-9">
+
+
+            <div class="index-text">
+
+                <p class="text-justify">
+
+                    致病菌（Pathogenic bacteria ) 是能引起疾病的微生物，也被称为病原微生物，其包括细菌、病毒、真菌及寄生虫等。
+                    致病性是病原体潜在的致病能力。致病性在意义上与毒力有关，但一些权威人士已将其作为定性术语加以区分，
+                    而后者是定量的。按照这个标准，一个有机体在特定的环境中可以说是致病的或非致病的，但并不比另一个有机体“更致、
+                    病”。这种比较是用相对毒性来描述的。致病性也不同于病毒的传播能力，后者可以量化感染的风险。
+                </p>
+                <p class="text-justify">
+                    病原体可根据其产生毒素、进入组织、定植、劫持营养物质和免疫抑制宿主的能力来描述。
+                </p>
+
+
+            </div>
+
+
+            <div class="panel panel-default" style="margin-top: 15px;">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-database"></i> 资源</h3>
+
+
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="@routes.Assets.at("images/bacteria.jpg")" class="index-icon">
+                                        <a href="@routes.BacteriaController.browse()" target="_blank"
+                                        class="btn btn-success btn-jump" role="button"><i class="fa fa-hand-o-right"></i>
+                                            查看</a>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -25px">
+                                        <h3>细菌</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="@routes.Assets.at("images/virus.jpg")" class="index-icon">
+                                        <a href="@routes.VirusController.browse()" target="_blank"
+                                        class="btn btn-success btn-jump" role="button"><i class="fa fa-hand-o-right"></i>
+                                            查看</a>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -25px">
+                                        <h3>病毒</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="@routes.Assets.at("images/fungus.jpg")" class="index-icon">
+                                        <a href="@routes.FungusController.browse()" target="_blank"
+                                        class="btn btn-success btn-jump" role="button"><i class="fa fa-hand-o-right"></i>
+                                            查看</a>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -25px">
+                                        <h3>真菌</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="@routes.Assets.at("images/parasite.jpg")" class="index-icon">
+                                        <a href="@routes.ParasiteController.browse()" target="_blank"
+                                        class="btn btn-success btn-jump" role="button"><i class="fa fa-hand-o-right"></i>
+                                            查看</a>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -25px">
+                                        <h3>寄生虫</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="@routes.Assets.at("images/risk.jpg")" class="index-icon">
+                                        <a href="@routes.BacteriaController.toRandomForest()" target="_blank"
+                                        class="btn btn-success btn-jump" role="button"><i class="fa fa-hand-o-right"></i>
+                                            查看</a>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -25px">
+                                        <h3>风险评估</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="thumbnail">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <img src="@routes.Assets.at("images/tree.png")" class="index-icon">
+                                        <a href="@routes.TreeController.tree()" target="_blank"
+                                        class="btn btn-success btn-jump" role="button"><i class="fa fa-hand-o-right"></i>
+                                            查看</a>
+                                    </div>
+                                    <div class="col-sm-6" style="margin-left: -25px">
+                                        <h3>分类树</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+
+            <div align="center" style="margin-top: 20px">
+                <a href="" target="_blank"
+                style="text-align: center">
+                    <img src="@routes.Assets.at("images/title.png")" width="95%" style="margin-bottom: 20px">
+                </a>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-search"></i> 搜索</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" id="form"
+                    accept-charset="UTF-8" method="get" action="/chinese/Search/searchBefore">
+                        <input type="text" style="float: left;height: 40px;" class="form-control" placeholder="关键词" name="input">
+                        <button type="submit"
+                        style="float: left;
+                            background-color: transparent;
+                            border: transparent;
+                            float: right;
+                            margin-top: -31px;
+                            margin-right: 5px;"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-cube"></i> 数据统计</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-chevron-circle-right"></i> 细菌样品: 1072</li>
+                        <li><i class="fa fa-chevron-circle-right"></i> 病毒样品: 450</li>
+                        <li><i class="fa fa-chevron-circle-right"></i> 真菌样品: 141</li>
+                        <li><i class="fa fa-chevron-circle-right"></i> 寄生虫样品: 164</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-bookmark"></i> 版本说明</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-chevron-circle-right"></i>
+                            病原体数据库和标准化评价体系于2018年11月上线。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <footer>
+    @english.home.footer()
+    </footer>
+
+
+}

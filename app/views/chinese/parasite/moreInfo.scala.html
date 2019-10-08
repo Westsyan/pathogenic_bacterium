@@ -1,0 +1,248 @@
+@import utils.parasiteData
+@(parasite: parasiteData)(implicit session: Session)
+@chinese.home.main("寄生虫信息") {
+
+
+    <style>
+            th {
+                width: 25%;
+            }
+
+            .notes {
+                margin-left: 100px;
+                margin-right: 10px;
+            }
+    </style>
+
+    <div class="row">
+        <div class="form-group col-sm-12">
+            <h2 class="page-heading"
+            style="text-align: left;
+                border-bottom: 5px solid #e9f3f4">寄生虫信息</h2>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered" style="table-layout: fixed;
+            word-wrap: break-word">
+            <tbody id="info">
+
+                <tr>
+                    <th>名称</th>
+                    <td>@parasite.name</td>
+                </tr>
+
+                <tr>
+                    <th>中文名</th>
+                    <td>@parasite.chinese</td>
+                </tr>
+
+                <tr>
+                    <th>目（order）</th>
+                    <td>@parasite.order</td>
+                </tr>
+
+                <tr>
+                    <th>科（family）</th>
+                    <td>@parasite.family</td>
+                </tr>
+
+                <tr>
+                    <th>属（genus）</th>
+                    <td>@parasite.genus</td>
+                </tr>
+
+                <tr>
+                    <th>种（species）</th>
+                    <td>@parasite.species</td>
+                </tr>
+
+                    <tr>
+                        <th>是否感染人</th>
+                        <td>@parasite.isPeople</td>
+                    </tr>
+
+
+                    <tr>
+                        <th>是否感染动物</th>
+                        <td>@parasite.isAnimal</td>
+                    </tr>
+
+
+                    <tr>
+                        <th>是否感染植物</th>
+                        <td>@parasite.isPlant</td>
+                    </tr>
+
+                    <tr>
+                        <th>传播途径</th>
+                        <td>@parasite.tranRoute</td>
+                    </tr>
+
+                    <tr>
+                        <th>感染剂量</th>
+                        <td>@parasite.infectiveDose</td>
+                    </tr>
+
+                    <tr>
+                        <th>体外存活条件</th>
+                        <td>@parasite.survivalCondition</td>
+                    </tr>
+
+                    <tr>
+                        <th>有效消毒剂</th>
+                        <td>@parasite.isSanitizer</td>
+                    </tr>
+
+                    <tr>
+                        <th>预后/死亡率</th>
+                        <td>@parasite.deathRate</td>
+                    </tr>
+
+                    <tr>
+                        <th>有效治疗药物</th>
+                        <td>@parasite.isMedicine</td>
+                    </tr>
+
+                    <tr>
+                        <th>疫苗</th>
+                        <td>@parasite.isVaccine</td>
+                    </tr>
+
+                    <tr>
+                        <th>中国 (2006)</th>
+                        <td>@parasite.chinaRisk
+                            @if(!parasite.chinaNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @parasite.canadaNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>美国 NIH (2016)</th>
+                        <td>@parasite.usanihRisk
+                            @if(!parasite.usanihNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @parasite.usanihNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>美国 BMBL (2009)</th>
+                        <td>@parasite.usabmblRisk
+                            @if(!parasite.usabmblNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @parasite.usabmblNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>澳大利亚/新西兰 (2010)</th>
+                        <td>@parasite.australiaNewzealandRisk
+                            @if(!parasite.australiaNewzealandNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @parasite.australiaNewzealandNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>比利时 (2008)</th>
+                        <td>@parasite.belgiumRisk
+                            @if(!parasite.belgiumNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @parasite.belgiumNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>加拿大 (2015)</th>
+                        <td>@parasite.canadaRisk
+                            @if(!parasite.canadaNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @parasite.canadaNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>欧盟 (2000)</th>
+                        <td>@parasite.euRisk
+                            @if(!parasite.euNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @parasite.euNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>德国 (2013)</th>
+                        <td>@parasite.germanyRisk
+                            @if(!parasite.germanyNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @parasite.germanyNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>日本</th>
+                        <td>@parasite.japanRisk
+                            @if(!parasite.japanNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @parasite.japanNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>新加坡</th>
+                        <td>@parasite.singaporeRisk
+                            @if(!parasite.singaporeNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @parasite.singaporeNotes
+                            }
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <th>瑞士</th>
+                        <td>@parasite.switzerlandRisk
+                            @if(!parasite.switzerlandNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @parasite.switzerlandNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>英国 (2013)</th>
+                        <td>@parasite.ukRisk
+                            @if(!parasite.ukNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @parasite.ukNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>选择 CDC 代理</th>
+                        <td>@parasite.selectAgentCdc</td>
+                    </tr>
+
+                    <tr>
+                        <th>选择 USDA 代理</th>
+                        <td>@parasite.selectAgentUsda</td>
+                    </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+}

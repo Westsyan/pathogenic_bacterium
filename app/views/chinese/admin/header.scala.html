@@ -1,0 +1,87 @@
+@(isLogin:Boolean)
+<div class="page-header">
+    <div class="banner">
+        <div class="logo">
+            <h4 style="margin-top: 0px;width: 1000px; color: white;text-shadow: 2px 2px 0 #555;padding: 25px 15px 20px 15px;
+                float: right;margin-left: 20px;"><span style="font-size: 35px;
+                font-weight: bolder;padding-right: 15px;color: white;
+                border-right: 2px solid white;">
+                <a href="@routes.IndexController.home()"style="color: white;">复旦</a>
+            </span> <font style="font-size: 23px">&nbsp;病原体数据库和标准化评价体系</font></h4>
+        </div>
+    </div>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#coll" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+
+            @if(!isLogin){
+                <ul class="nav navbar-nav">
+                    <li><a href=""><span class="glyphicon glyphicon-home"></span>
+                        Home</a></li>
+
+                    <li class="dropdown">
+                        <a href="#"><span class="fa fa-search"></span>
+                            Bacteria <span class="fa fa-caret-down"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@routes.BacteriaController.uploadBefore()">Upload Bacteria</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#"><span class="fa fa-search"></span>
+                            Virus <span class="fa fa-caret-down"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Upload Virus</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="@routes.IndexController.toPassword()"><span class="fa fa-pencil"></span>password</a>
+                    </li>
+
+                    <li>
+                        <a href="@routes.IndexController.toLogin()"><span class="fa fa-user"></span>login</a>
+                    </li>
+
+                    <li>
+                        <a href="/english/logout?language=english"><span class="fa fa-user-times"></span>Logout</a>
+                    </li>
+                </ul>
+            }
+
+
+            <ul class="nav navbar-nav navbar-right">
+                <li style="color: white; margin-left: -10px" >
+                    <a><button type="button" onclick="toEnglish()" style="background-color: transparent;
+                        border: transparent"><span class="fa fa-wordpress" style="margin-right: 3px"></span>English</button>
+                    </a></li>
+            </ul>
+
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</div>
+
+<script>
+
+        function toEnglish() {
+            var path = window.location.pathname;
+            var parameter = window.location.search;
+            var path1 = path.split("/");
+            var path2 = "/english/" + path1[2] + "/" + path1[3] + parameter;
+            if(path1[2] == "admin"){
+                path2 = "/english/admin/" + path1[3] + "/" + path1[4] + parameter;
+            }
+            window.location.href = path2;
+        }
+
+
+</script>
+

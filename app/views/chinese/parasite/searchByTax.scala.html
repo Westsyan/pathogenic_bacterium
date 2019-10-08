@@ -1,0 +1,179 @@
+@()(implicit session: Session)
+@chinese.home.main("根据分类信息搜索-寄生虫"){
+
+
+  <div class="row">
+    <div class="form-group col-sm-12">
+      <h2 class="page-heading"
+      style="text-align: left;
+        border-bottom: 5px solid #e9f3f4">根据分类信息搜索</h2>
+    </div>
+  </div>
+
+
+  <form class="registration-form form-horizontal" id="form"
+  accept-charset="UTF-8" method="post">
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-4">目:</label>
+        <div class="col-sm-8">
+          <select name="order" id="order" class="checkbox form-control" onchange="changeOrder(this)"></select>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-4">科:</label>
+        <div class="col-sm-8">
+          <select name="family" id="family" class="checkbox form-control" onchange="changeFamily(this)"></select>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-4">属:</label>
+        <div class="col-sm-8">
+          <select class="checkbox form-control" name="genus" id="genus" >
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-4">是否人人之间传播:</label>
+        <div class="col-sm-8">
+          <select class="checkbox form-control" name="isPeople" id="isPeople">
+            <option value="All" SELECTED>All</option>
+            <option value="是">是</option>
+            <option value="否">否</option>
+            <option value="未知">未知</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-sm-6">
+        <label class="control-label col-sm-4">传播途径:</label>
+        <div class="col-sm-8">
+          <input type="text" style="float: left;
+            height: 40px;" class="form-control" id="tranRoute" name="tranRoute">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="actions col-sm-offset-1 col-sm-2">
+        <button type="button" class="btn btn-primary" style="width: 90%;" id="search" onclick="mySearch()">搜索</button>
+      </div>
+    </div>
+  </form>
+
+  <div style="display: none;" id="showTable">
+    <hr>
+
+    @chinese.share.title()
+
+    <div id="toolbar"></div>
+
+    <table class="display table table-bordered" id="table" data-pagination="true" data-search="true"
+    data-toolbar="#toolbar" data-page-list="[10, 25, 50, 100, all]" data-search-align="left" data-multiple-search="true"
+    >
+      @chinese.parasite.table()
+    </table>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+
+  <script src="@routes.Assets.at("javascripts/parasite_ch.js")" type="text/javascript"></script>
+  <script>
+
+          $(function () {
+
+            $.ajax({
+              url: "@routes.ParasiteController.getAllSelect()",
+              type: "get",
+              success: function (data) {
+                $("#order").select2({data: data.order});
+                $("#family").select2({
+                  placeholder: "请选择目！",
+                  allowClear: true
+                });
+                $("#genus").select2({
+                  placeholder: "请选择目和科！",
+                  allowClear: true
+                });
+              }
+            });
+
+            $("#isPeople").select2();
+          });
+
+          function changeOrder(obj) {
+            var order = obj.value;
+            $.ajax({
+              url: "/english/Parasite/getByOrder?order=" + order,
+              type: "post",
+              success: function (data) {
+
+                if(order != "All"){
+                  $("#family").empty().select2({data: data.family});
+                }else{
+                  $("#family").empty().select2({
+                    placeholder: "请选择目！",
+                    allowClear: true
+                  });
+                }
+
+                $("#genus").empty().select2({
+                  placeholder: "请选择目和科！",
+                  allowClear: true
+                });
+
+              }
+            })
+          }
+
+          function changeFamily(obj) {
+            var family = obj.value;
+            $.ajax({
+              url: "/english/Parasite/getByFamily?family=" + family,
+              type: "post",
+              success: function (data) {
+                $("#genus").empty().select2({data: data.genus});
+              }
+            })
+          }
+
+
+          function mySearch() {
+            var index = layer.load(1);
+            $.ajax({
+              url: "@routes.ParasiteController.searchByTax()",
+              type: "get",
+              dataType: "json",
+              data: $("#form").serialize(),
+              success: function (data) {
+                layer.close(index);
+                $("#table").bootstrapTable({data:data});
+                $("#table").bootstrapTable('load',data);
+                $("#showTable").show();
+              }
+            });
+          }
+
+
+  </script>
+
+
+
+}

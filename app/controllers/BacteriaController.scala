@@ -2,13 +2,13 @@ package controllers
 
 import java.io.File
 import java.nio.file.Files
-import javax.inject.Inject
 
+import javax.inject.Inject
 import dao._
 import models.Tables._
 import org.apache.commons.io.FileUtils
 import play.api.data.Form
-import play.api.data.Forms._
+import play.api.data.Forms.{text, _}
 import play.api.libs.json.Json
 import play.api.mvc.{Action, Controller}
 import utils.{EncodingDetect, ExecCommand, Utils, transForm}
@@ -40,7 +40,7 @@ class BacteriaController @Inject()(bacteriadao: bacteriaDao) extends Controller 
     Ok(Json.toJson("1"))
   }
 
-  def toBrowse = Action { implicit request =>
+  def browse = Action { implicit request =>
     Ok(views.html.english.bacteria.browse())
   }
 
@@ -156,15 +156,19 @@ class BacteriaController @Inject()(bacteriadao: bacteriaDao) extends Controller 
 
   def runRandomForest = Action { implicit request =>
     val data = randomForm.bindFromRequest.get
-    val encoding = EncodingDetect.getJavaEncode(Utils.path + "/data.txt")
-    val input = FileUtils.readLines(new File(Utils.path, "data.txt"), encoding).asScala
-    val body = data.is_breath + "\t" + data.is_people + "\t" + data.is_100 + "\t" + data.is_24 + "\t" + data.is_medicine + "\t" + data.is_vaccine + "\t" + data.death
+    val body = data.is_breath + "\t" + data.is_people + "\t" + data.is_100 + "\t" + data.is_24+ "\t" + data.death + "\t" + data.is_medicine + "\t" + data.is_vaccine + "\t0"
     val tmpDir = Files.createTempDirectory("tmpDir").toString
-    val text = input :+ body
-    FileUtils.writeLines(new File(tmpDir, "data.txt"), encoding, text.asJava)
-    val path = tmpDir.replaceAll("\\\\", "/")
-
     val states = Seq("china", "usa_nih", "usa_bmbl", "australia", "belgium", "canada", "eu", "germany", "japan", "singapore", "switzerland", "uk")
+
+
+    states.foreach{c=>
+      val encoding = EncodingDetect.getJavaEncode(Utils.path + s"/$c.txt")
+      val input = FileUtils.readLines(new File(Utils.path, s"$c.txt"), encoding).asScala
+      val text = input :+ body
+      FileUtils.writeLines(new File(tmpDir, s"$c.txt"), encoding, text.asJava)
+    }
+
+    val path = tmpDir.replaceAll("\\\\", "/")
 
     runForest(path)
 
@@ -196,10 +200,10 @@ save(rf_ntree,file='F:/database/pathogenic/${input}_rf_ntree.txt')
       s"""|setwd("${tmpDir}")
           |library('randomForest')
           |city <- c("china", "usa_nih", "usa_bmbl","australia", "belgium", "canada", "eu", "germany", "japan", "singapore","switzerland","uk")
-          |in_data <- read.table("data.txt", header = T, sep = "\t", check.names = FALSE,quote="")
           |for(c in city){
+          |in_data <- read.table(sprintf('%s.txt',c), header = T, sep = "\t", check.names = FALSE,quote="")
           |load(sprintf('${Utils.path}/%s_rf_ntree.txt',c))
-          |RF_prediction = predict(rf_ntree, in_data)
+          |RF_prediction = predict(rf_ntree, in_data[,1:7])
           |sink(file=sprintf('%s_result.txt',c))
           |print(RF_prediction[length(RF_prediction)])
           |sink()

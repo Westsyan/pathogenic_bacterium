@@ -1,5 +1,5 @@
 
-var tax =  ["目（order）", "科（family）","属（genus）", "种（species）"];
+var tax =  ["Order", "Family","Genus", "Species"];
 
 var taxValue = ["order", "family","genus", "species"];
 
@@ -15,8 +15,8 @@ $.each(tax, function (n, value) {
 $("#tax").append(taxHtml);
 
 
-var posi = ["是否感染人", "是否感染动物", "是否感染植物", "传播途径", "感染剂量",
-    "体外存活条件", "有效消毒剂", "预后/死亡率", "有效治疗药物", "疫苗"];
+var posi = ["Infected humans", "Infected animals", "Infected plants", "Route of transmission ", "Infective dose",
+    "Vitro survival condition", "Effective disinfectant", "Mortality rate", "Effective therapeutic agent", "Vaccine"];
 
 var posiValue = [ "isPeople", "isAnimal", "isPlant", "tranRoute", "infectiveDose",
     "survivalCondition", "isSanitizer", "deathRate", "isMedicine", "isVaccine"];
@@ -33,10 +33,10 @@ $.each(posi, function (n, value) {
 $("#position").append(posiHtml);
 
 
-var risk = ["中国（2006）", "美国NIH (2016)", "美国BMBL (2009)",
-    "澳大利亚/新西兰 Australia/New Zealand  (2010)", "比利时 Belgium (2008)", "加拿大 Canada (2015)",
-    "欧盟 EU (2000)", "德国 Germany (2013)", "日本 Japan", "新加坡 Singapore", "瑞士 Switzerland",
-    "英国 UK (2013)", "Select Agent CDC", "Select Agent USDA"];
+var risk = ["CHINA (2006)", "USA NIH (2016)", "USA BMBL (2009)",
+    "Australia/New Zealand (2010)", "Belgium (2008)", "Canada (2015)",
+    "EU (2000)", "Germany (2013)", "Japan", "Singapore", "Switzerland",
+    "UK (2013)", "Select Agent CDC", "Select Agent USDA"];
 
 var riskValue = ["chinaRisk", "usanihRisk", "usabmblRisk", "australiaNewzealandRisk",
     "belgiumRisk", "canadaRisk", "euRisk", "germanyRisk", "japanRisk", "singaporeRisk",
@@ -54,12 +54,12 @@ $.each(risk, function (n, value) {
 $("#risk").append(riskHtml);
 
 
-var array = ["目（order）","科（family）","属（genus）","种（species）",
-    "是否感染人","是否感染动物","是否感染植物","传播途径","感染剂量","体外存活条件","有效消毒剂",
-    "预后/死亡率","有效治疗药物","疫苗","中国（2006）","美国NIH (2016)","美国BMBL (2009)",
-    "澳大利亚/新西兰 Australia/New Zealand  (2010)",	"比利时 Belgium (2008)",	"加拿大 Canada (2015)",
-    "欧盟 EU (2000)","德国 Germany (2013)","日本 Japan","新加坡 Singapore",	"瑞士 Switzerland",
-    "英国 UK (2013)","Select Agent CDC","Select Agent USDA"];
+var array = ["Order","Family","Genus","Species",
+    "Infected person","Infected animal","Infected plant","传播途径","感染剂量","体外存活条件","有效消毒剂",
+    "预后/死亡率","有效治疗药物","疫苗","CHINA (2006)","USA NIH (2016)","USA BMBL (2009)",
+    "Australia/New Zealand (2010)",	"Belgium (2008)",	"Canada (2015)",
+    "EU (2000)","Germany (2013)","Japan","Singapore",	"Switzerland",
+    "UK (2013)","Select Agent CDC","Select Agent USDA"];
 var values = ["order", "family" , "genus", "species" , "isPeople" , "isAnimal",
     "isPlant", "tranRoute" , "infectiveDose" , "survivalCondition", "isSanitizer", "deathRate",
     "isMedicine", "isVaccine", "chinaRisk" , "usanihRisk" , "usabmblRisk" , "australiaNewzealandRisk",
@@ -81,7 +81,7 @@ if(String(href).indexOf("/admin/") != -1) {
     $("#table").bootstrapTable({
         columns: [{
             field: "operation",
-            title: "操作",
+            title: "Operation",
             formatter: function (value, row, index) {
                 var de = "<a href='/english/admin/Parasite/updateBefore?id=" + row.id + "' target='_blank'><button class='update' title='修改'><i class='fa fa-edit'></i></button></a>" +
                     "<button class='delete' onclick='openDelete(this)' value=\"" + row.name + "\" id='" + row.id + "' title='删除'><i class='fa fa-trash'></i></button>";
@@ -89,7 +89,7 @@ if(String(href).indexOf("/admin/") != -1) {
             }
         },{
             field:"name",
-            title:"名称",
+            title:"Name",
             formatter: function (value,row,index) {
                 var de = "<i><a href='/english/Parasite/moreInfo?id=" + row.id +"' target='_blank'>" + row.name+"</a></i>";
                 return de;
@@ -100,7 +100,7 @@ if(String(href).indexOf("/admin/") != -1) {
     $("#table").bootstrapTable({
         columns:[{
             field: "name",
-            title: "名称",
+            title: "Name",
             formatter: function (value, row, index) {
                 var de = "<i><a href='/english/Parasite/moreInfo?id=" + row.id + "' target='_blank'>" + row.name + "</a></i>";
                 return de;
@@ -144,27 +144,28 @@ function loadParasite() {
 
 function openDelete(obj) {
     swal({
-            title: '删除?',
-            text: "确认删除寄生虫 \"" + obj.value + "\" ?",
+            title: 'Delete?',
+            text: "Delete parasite \"" + obj.value + "\" ?",
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: '确认',
-            cancelButtonText: "取消",
+            confirmButtonText: 'Ok',
+            cancelButtonText: "Cancel",
             closeOnConfirm: false
         }, function () {
-            $.ajax({
+
+        $.ajax({
                 url: "/english/admin/Parasite/deleteParasite?id=" + obj.id,
                 type: "delete",
                 success: function (data) {
                     if (data.valid == "false") {
-                        swal("错误", data.message, "error")
+                        swal("Error!", data.message, "error")
                     } else {
                         swal({
                             type: "success",
                             title: "\n",
-                            text: "删除成功！"
+                            text: "Delete Success！"
                         }, function () {
                             loadParasite();
                         })

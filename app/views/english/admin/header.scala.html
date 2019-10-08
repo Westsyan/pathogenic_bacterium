@@ -52,7 +52,7 @@
                     </li>
 
                     <li>
-                        <a href="@routes.IndexController.logout()"><span class="fa fa-user-times"></span>Logout</a>
+                        <a href="/english/logout?language=english"><span class="fa fa-user-times"></span>Logout</a>
                     </li>
                 </ul>
             }
@@ -60,7 +60,7 @@
 
             <ul class="nav navbar-nav navbar-right">
                 <li style="color: white; margin-left: -10px" >
-                    <a><button type="button" onclick="toOther()" style="background-color: transparent;
+                    <a><button type="button" onclick="toChinese()" style="background-color: transparent;
                         border: transparent"><span class="fa fa-wordpress" style="margin-right: 3px"></span>中文</button>
                     </a></li>
             </ul>
@@ -68,3 +68,20 @@
         </div><!-- /.navbar-collapse -->
     </nav>
 </div>
+
+<script>
+
+        function toChinese() {
+            var path = window.location.pathname;
+            var parameter = window.location.search;
+            var path1 = path.split("/");
+            var path2 = "/chinese/" + path1[2] + "/" + path1[3] + parameter;
+            if(path1[2] == "admin"){
+                path2 =  "/chinese/admin/" + path1[3] + "/" + path1[4] + parameter;
+            }
+            window.location.href = path2;
+        }
+
+
+</script>
+

@@ -16,6 +16,10 @@ class TreeController @Inject()(bacteriadao:bacteriaDao,virusdao:virusDao,fungusd
     Ok(views.html.english.tree.tree())
   }
 
+  def treeCH =  Action{implicit request=>
+    Ok(views.html.chinese.tree.tree())
+  }
+
   case class treeData(id:String,sample:String,name:String,order:String,family:String,genus:String)
 
   def getTreeJson = Action {

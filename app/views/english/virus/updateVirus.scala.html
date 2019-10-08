@@ -16,21 +16,21 @@
     style="margin: 20px;">
 
         <div class="form-group col-sm-6">
-            <label class="control-label col-sm-5">名称</label>
+            <label class="control-label col-sm-5">Name</label>
             <div class="col-sm-7">
                 <input class="form-control" name="name" id="name">
             </div>
         </div>
 
         <div class="form-group col-sm-6">
-            <label class="control-label col-sm-5">中文名</label>
+            <label class="control-label col-sm-5">Chinese</label>
             <div class="col-sm-7">
                 <input class="form-control" name="chinese" id="chinese">
             </div>
         </div>
 
         <div class="form-group col-sm-6">
-            <label class="control-label col-sm-5">目（order）</label>
+            <label class="control-label col-sm-5">Order</label>
             <div class="col-sm-7">
                 <input class="form-control" name="order" id="order">
             </div>
@@ -39,28 +39,28 @@
 
 
         <div class="form-group col-sm-6">
-            <label class="control-label col-sm-5">科（family）</label>
+            <label class="control-label col-sm-5">Family</label>
             <div class="col-sm-7">
                 <input class="form-control" name="family" id="family">
             </div>
         </div>
 
         <div class="form-group col-sm-6">
-            <label class="control-label col-sm-5">亚科（Subfamily）</label>
+            <label class="control-label col-sm-5">Subfamily</label>
             <div class="col-sm-7">
                 <input class="form-control" name="subfamily" id="subfamily">
             </div>
         </div>
 
         <div class="form-group col-sm-6">
-            <label class="control-label col-sm-5">属（genus）</label>
+            <label class="control-label col-sm-5">Genus</label>
             <div class="col-sm-7">
                 <input class="form-control" name="genus" id="genus">
             </div>
         </div>
 
         <div class="form-group col-sm-6">
-            <label class="control-label col-sm-5">种（species）</label>
+            <label class="control-label col-sm-5">Species</label>
             <div class="col-sm-7">
                 <input class="form-control" name="species" id="species">
             </div>
@@ -83,7 +83,7 @@
             <div class="actions col-sm-offset-3 col-sm-3">
                 <button type="button" class="btn btn-primary" style="width: 80%;
                     margin-top: 5px" id="search" onclick="Update()">
-                    Upload</button>
+                    Update</button>
             </div>
         </div>
 
@@ -148,9 +148,9 @@
                     success: function (data) {
                         layer.close(index);
                         if (data.valid == "false") {
-                            swal("更新失败", data.message, "error")
+                            swal("Update Failed！", data.message, "error")
                         } else {
-                            swal("\n", "更新成功", "success")
+                            swal("\n", "Update Success!", "success")
                         }
                     }
                 })

@@ -1,0 +1,162 @@
+@(isLogin:Boolean)
+<div class="page-header">
+    <div class="banner">
+        <div class="logo">
+            <h4 style="margin-top: 0px;width: 1000px; color: white;text-shadow: 2px 2px 0 #555;padding: 25px 15px 20px 15px;
+            float: right;margin-left: 20px;"><span style="font-size: 35px;
+                font-weight: bolder;padding-right: 15px;color: white;
+                border-right: 2px solid white;">复旦</span> <font style="font-size: 23px;">&nbsp;病原体数据库和标准化评价体系</font></h4>
+        </div>
+    </div>
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#coll" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="@routes.ChineseController.index()"><span class="glyphicon glyphicon-home"></span>
+                    主页</a></li>
+
+                <li class="dropdown">
+                    <a href="#"><span class="fa fa-google-wallet"></span>
+                       细菌  <span class="fa fa-caret-down"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@routes.BacteriaCHController.browse()">总览</a></li>
+                        <li class="divider"></li>
+                        <li><a href="@routes.BacteriaCHController.searchByTaxBefore()">根据分类信息搜索</a></li>
+                        @if(isLogin == false){
+                            <li class="divider"></li>
+                            <li><a href="@routes.BacteriaCHController.uploadBefore()">上传细菌信息</a></li>
+                            <li><a href="@routes.BacteriaCHController.manageBacteriaBefore()">管理细菌信息</a></li>
+                        }
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#"><span class="fa fa-google-wallet"></span>
+                        病毒 <span class="fa fa-caret-down"></span></a>
+                    <ul class="dropdown-menu">
+                 @*       <li><a href="@routes.VirusController.toTree()">Tree</a></li>*@
+                        <li><a href="@routes.VirusCHController.browse()">总览</a></li>
+                        <li class="divider"></li>
+                        <li><a href="@routes.VirusCHController.searchByTaxBefore()">根据分类信息搜索</a></li>
+                   @*     <li><a href="@routes.VirusController.toSearchByTax()">Search By Position</a></li>*@
+                        @if(isLogin == false){
+                            <li class="divider"></li>
+                            <li><a href="@routes.VirusCHController.uploadBefore()">上传病毒信息</a></li>
+                            <li><a href="@routes.VirusCHController.manageBefore()">管理病毒信息</a></li>
+                        }
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#"><span class="fa fa-google-wallet"></span>
+                        真菌 <span class="fa fa-caret-down"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@routes.FungusCHController.browse()">总览</a></li>
+                        <li class="divider"></li>
+
+                        <li><a href="@routes.FungusCHController.searchByTaxBefore()">根据分类信息搜索</a></li>
+                        @if(isLogin == false){
+                            <li class="divider"></li>
+                            <li><a href="@routes.FungusCHController.uploadBefore()">上传真菌信息</a></li>
+                            <li><a href="@routes.FungusCHController.manageBefore()">管理真菌信息</a></li>
+                        }
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#"><span class="fa fa-google-wallet"></span>
+                        寄生虫 <span class="fa fa-caret-down"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@routes.ParasiteCHController.browse()">总览</a></li>
+                        <li class="divider"></li>
+                        <li><a href="@routes.ParasiteCHController.searchByTaxBefore()">根据分类信息搜索</a></li>
+                        @if(isLogin == false){
+                            <li class="divider"></li>
+                            <li><a href="@routes.ParasiteCHController.uploadBefore()">上传寄生虫信息</a></li>
+                            <li><a href="@routes.ParasiteCHController.manageBefore()">管理寄生虫信息</a></li>
+                        }
+                    </ul>
+                </li>
+
+                @if(isLogin == false){
+                    <li class="dropdown">
+                        <a href="@routes.BacteriaController.toRandomForest"><span class="fa fa-google-wallet"></span>
+                            风险评估 <span class="fa fa-caret-down"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@routes.ChineseController.meanDecreaseGini()">Gini 系数</a></li>
+                            </ul>
+                    </li>
+                }else{
+                    <li>
+                        <a href="@routes.BacteriaCHController.toRandomForest"><span class="fa fa-bar-chart"></span>
+                            风险评估</a>
+                    </li>
+                }
+
+
+                <li>
+                    <a href="@routes.TreeController.treeCH()"><span class="fa fa-tree"></span>
+                        分类树</a>
+                </li>
+
+                <li>
+                    <a href="#"><span class="fa fa-paper-plane"></span>
+                        关于</a>
+                </li>
+
+            </ul>
+
+            @if(isLogin == false) {
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="@routes.IndexController.toPassword()"><span class="fa fa-pencil"></span>密码</a>
+                    </li>
+                    <li>
+                        <a href="/english/logout?language=chinese"><span class="fa fa-user"></span> 登出</a>
+                    </li>
+                    <li style="color: white;
+                        margin-left: -10px" >
+                        <a><button type="button" onclick="toEnglish()" style="background-color: transparent;
+                            border: transparent"><span class="fa fa-wordpress" style="margin-right: 3px"></span>English</button>
+                        </a></li>
+                </ul>
+            }else{
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="@routes.ChineseController.toLogin()"><span class="fa fa-user"></span> 登录</a>
+                    </li>
+                    <li style="color: white;
+                        margin-left: -10px" >
+                        <a><button type="button" onclick="toEnglish()" style="background-color: transparent;
+                            border: transparent"><span class="fa fa-wordpress" style="margin-right: 3px"></span>English</button>
+                        </a></li>
+                </ul>
+            }
+
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</div>
+
+<script>
+
+        function toEnglish() {
+            var path = window.location.pathname;
+            var parameter = window.location.search;
+            var path1 = path.split("/");
+            var path2 = "/english/" + path1[2] + "/" + path1[3] + parameter;
+            if(path1[2] == "admin"){
+                path2 = "/english/admin/" + path1[3] + "/" + path1[4] + parameter;
+            }
+            window.location.href = path2;
+        }
+
+
+</script>

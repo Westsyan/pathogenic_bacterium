@@ -1,0 +1,254 @@
+@import utils.bacteriaData
+@(bacteria: bacteriaData)(implicit session: Session)
+@chinese.home.main("细菌信息") {
+
+
+    <style>
+            th {
+                width: 25%;
+            }
+
+            .notes {
+                margin-left: 100px;
+                margin-right: 10px;
+            }
+    </style>
+
+    <div class="row">
+        <div class="form-group col-sm-12">
+            <h2 class="page-heading"
+            style="text-align: left;
+                border-bottom: 5px solid #e9f3f4">细菌信息</h2>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered" style="table-layout: fixed;
+            word-wrap: break-word">
+            <tbody id="info">
+
+                <tr>
+                    <th>名称</th>
+                    <td><i>@bacteria.name</i></td>
+                </tr>
+
+                <tr>
+                    <th>中文名</th>
+                    <td>@bacteria.chinese</td>
+                </tr>
+
+                <tr>
+                    <th>目</th>
+                    <td>@bacteria.order</td>
+                </tr>
+
+                <tr>
+                    <th>亚目</th>
+                    <td>@bacteria.suborder</td>
+                </tr>
+
+                <tr>
+                    <th>科</th>
+                    <td>@bacteria.family</td>
+                </tr>
+
+                <tr>
+                    <th>属</th>
+                    <td>@bacteria.genus</td>
+                </tr>
+
+                <tr>
+                    <th>种</th>
+                    <td>@bacteria.species</td>
+                </tr>
+
+                    <tr>
+                        <th>是否感染人</th>
+                        <td>@bacteria.isPeople</td>
+                    </tr>
+
+
+                    <tr>
+                        <th>是否感染动物</th>
+                        <td>@bacteria.isAnimal</td>
+                    </tr>
+
+
+                    <tr>
+                        <th>是否感染植物</th>
+                        <td>@bacteria.isPlant</td>
+                    </tr>
+
+                    <tr>
+                        <th>传播途径</th>
+                        <td>@bacteria.tranRoute</td>
+                    </tr>
+
+                    <tr>
+                        <th>感染剂量</th>
+                        <td>@bacteria.infectiveDose</td>
+                    </tr>
+
+                    <tr>
+                        <th>体外存活条件</th>
+                        <td>@bacteria.survivalCondition</td>
+                    </tr>
+
+                    <tr>
+                        <th>有效消毒剂</th>
+                        <td>@bacteria.isSanitizer</td>
+                    </tr>
+
+                    <tr>
+                        <th>预后/死亡率</th>
+                        <td>@bacteria.deathRate</td>
+                    </tr>
+
+                    <tr>
+                        <th>有效治疗药物</th>
+                        <td>@bacteria.isMedicine</td>
+                    </tr>
+
+                    <tr>
+                        <th>疫苗</th>
+                        <td>@bacteria.isVaccine</td>
+                    </tr>
+
+                    <tr>
+                        <th>中国（2006）</th>
+                        <td>@bacteria.chinaRisk
+                            @if(!bacteria.chinaNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @bacteria.canadaNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>美国 NIH (2016)</th>
+                        <td>@bacteria.usanihRisk
+                            @if(!bacteria.usanihNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @bacteria.usanihNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>美国 BMBL (2009)*</th>
+                        <td>@bacteria.usabmblRisk
+                            @if(!bacteria.usabmblNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @bacteria.usabmblNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>澳大利亚/新西兰 (2010)</th>
+                        <td>@bacteria.australiaNewzealandRisk
+                            @if(!bacteria.australiaNewzealandNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @bacteria.australiaNewzealandNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>比利时 (2008)</th>
+                        <td>@bacteria.belgiumRisk
+                            @if(!bacteria.belgiumNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @bacteria.belgiumNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>加拿大 (2015)</th>
+                        <td>@bacteria.canadaRisk
+                            @if(!bacteria.canadaNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @bacteria.canadaNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>欧盟 (2000)</th>
+                        <td>@bacteria.euRisk
+                            @if(!bacteria.euNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @bacteria.euNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>德国 (2013)</th>
+                        <td>@bacteria.germanyRisk
+                            @if(!bacteria.germanyNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @bacteria.germanyNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>日本</th>
+                        <td>@bacteria.japanRisk
+                            @if(!bacteria.japanNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @bacteria.japanNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>新加坡</th>
+                        <td>@bacteria.singaporeRisk
+                            @if(!bacteria.singaporeNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @bacteria.singaporeNotes
+                            }
+                        </td>
+                    </tr>
+
+
+
+                    <tr>
+                        <th>瑞士</th>
+                        <td>@bacteria.switzerlandRisk
+                            @if(!bacteria.switzerlandNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @bacteria.switzerlandNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>英国 (2013)</th>
+                        <td>@bacteria.ukRisk
+                            @if(!bacteria.ukNotes.isEmpty) {
+                                <b class="notes">notes:</b>
+                                @bacteria.ukNotes
+                            }
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>选择 CDC 代理</th>
+                        <td>@bacteria.selectAgentCdc</td>
+                    </tr>
+
+                    <tr>
+                        <th>选择 USDA 代理</th>
+                        <td>@bacteria.selectAgentUsda</td>
+                    </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+}

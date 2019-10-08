@@ -1,0 +1,286 @@
+@()(implicit session: Session)
+@chinese.home.main("风险评估") {
+
+    <style>
+            td {
+                text-align: center;
+            }
+
+            th {
+                text-align: center;
+            }
+    </style>
+
+    <div class="row">
+        <div class="form-group col-sm-12">
+            <h2 class="page-heading"
+            style="text-align: left;
+                border-bottom: 5px solid #e9f3f4;
+                letter-spacing: 0px"><font style="font-size: 30px">风险评估</font></h2>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="form-group col-sm-12" style="font-weight: bold;font-size: 14px;">
+
+            <p>对于库中未收录的病原微生物，可以根据病原微生物的特性，对其危害度等级进行预测。</p>
+            <p>本预测模型根据各国已知的病原微生物病原体危害度等级及其特性建立，可以根据病原微生物的特性，对库中未收入的病原微生物
+                的危害度等级进行预测，预测结果将给出不同国家可能的危害度等级。但预测结果不等同于各国的危害度等级，仅供参考。</p>
+
+        </div>
+    </div>
+
+    <form class="registration-form form-horizontal" id="form"
+    accept-charset="UTF-8" method="post">
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">是否呼吸道传播:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="is_breath" id="is_breath">
+                        <option value="未知">
+                            未知</option>
+                        <option value="是">
+                            是</option>
+                        <option value="否">
+                            否</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">是否人与人之间<span style="color: red;">水平</span>传播:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="is_people" id="is_people">
+                        <option value="未知">
+                            未知</option>
+                        <option value="是">
+                            是</option>
+                        <option value="否">
+                            否</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">感染剂量是否<span style="color: red;">小于</span>100个病原:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="is_100" id="is_100">
+                        <option value="未知">
+                            未知</option>
+                        <option value="是">
+                            是</option>
+                        <option value="否">
+                            否</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">是否可以在自然条件下存活<span style="color: red;">超过</span>24小时:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="is_24" id="is_24">
+                        <option value="未知">
+                            未知</option>
+                        <option value="是">
+                            是</option>
+                        <option value="否">
+                            否</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">是否<span style="color: red;">没有</span>有效治疗药物:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="is_medicine" id="is_medicine">
+                        <option value="未知">
+                            未知</option>
+                        <option value="是">
+                            是</option>
+                        <option value="否">
+                            否</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">是否<span style="color: red;">没有</span>有效的预防性疫苗:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="is_vaccine" id="is_vaccine">
+                        <option value="是">
+                            是</option>
+                        <option value="否">
+                            否</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">死亡率:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="death" id="death">
+                        <option value="<1">< 1%</option>
+                        <option value="1-10">1%-10%</option>
+                        <option value="11-20">11%-20%</option>
+                        <option value="21-30">21%-30%</option>
+                        <option value="31-40">31%-40%</option>
+                        <option value="41-50">41%-50%</option>
+                        <option value="51-60">51%-60%</option>
+                        <option value="61-70">61%-70%</option>
+                        <option value="71-80">71%-80%</option>
+                        <option value="81-90">81%-90%</option>
+                        <option value="91-100">91%-100%</option>
+                        <option value="100">100%</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="actions col-sm-offset-3 col-sm-2">
+                <button type="button" class="btn btn-primary" style="width: 90%;" id="search" onclick="myAnalysis()">
+                    分析</button>
+            </div>
+        </div>
+    </form>
+
+
+    <div id="result" style="display: none;">
+        <hr>
+        <table class="table table-bordered table-hover" id="table">
+            <thead>
+                <tr>
+                    <th data-field="state">国家</th>
+                    <th data-field="china">中国（2006）</th>
+                    <th data-field="usa_nih">美国NIH (2016)</th>
+                    <th data-field="usa_bmbl">美国BMBL(2009)</th>
+                    <th data-field="australia">澳大利亚/新西兰 (2010)</th>
+                    <th data-field="belgium">比利时 (2008)</th>
+                    <th data-field="canada">加拿大(2015)</th>
+                    <th data-field="eu">欧盟(2000)</th>
+                    <th data-field="germany">德国 (2013)</th>
+                    <th data-field="japan">日本</th>
+                    <th data-field="singapore">新加坡</th>
+                    <th data-field="switzerland">瑞士</th>
+                    <th data-field="uk">英国 (2013)</th>
+
+
+                </tr>
+            </thead>
+        </table>
+
+        <br>
+       @* <p><b>注：中国的风险等级与WHO相反，第一类、第二类微生物统称为高致病性微生物。</b></p>*@
+        <br>
+
+
+        <div id="charts" style="border: 1px solid #ddd;
+            padding-top: 20px">
+            <br>
+        </div>
+
+
+        <br>
+
+        @chinese.share.china()
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <script src="@routes.Assets.at("Highcharts-6.0.1/code/highcharts.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("Highcharts-6.0.1/code/highcharts-more.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("Highcharts-6.0.1/code/modules/exporting.js")" type="text/javascript"></script>
+    <script>
+
+            $(function () {
+                $("#table").bootstrapTable();
+            });
+
+            var datas = [];
+
+
+            function myAnalysis() {
+                var index = layer.load(1);
+                $.ajax({
+                    url: "@routes.BacteriaController.runRandomForest()",
+                    type: "get",
+                    dataType: "json",
+                    data: $("#form").serialize(),
+                    success: function (x) {
+                        layer.close(index);
+                        $("#table").bootstrapTable('load', [x.table]);
+                        datas = x.risk;
+                        column();
+                        $("#result").show();
+                    }
+                })
+            }
+
+
+            function column() {
+                Highcharts.chart('charts', {
+                    chart: {
+                        type: 'column'
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    title: {
+                        text: "各国风险等级"
+                    },
+                    xAxis: {
+                        title: {
+                            text: "国家"
+                        },
+                        categories: ['中国（2006）', '美国NIH (2016)', '美国BMBL(2009)', '澳大利亚/新西兰 (2010)', '比利时 (2008)',
+                            '加拿大(2015)', '欧盟(2000)', '德国 (2013)', '日本', '新加坡', '瑞士', '英国 (2013)'],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        title: {
+                            text: "风险等级"
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    series: [{
+                        data: datas,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y:.0f}'
+                        },
+                        tooltip: {
+                            pointFormat: '风险等级： <b> {point.y}</b><br>'
+                        },
+                        colorByPoint: true
+                    }]
+                });
+            }
+
+
+    </script>
+
+
+}

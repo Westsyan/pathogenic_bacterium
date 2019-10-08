@@ -13,8 +13,10 @@ import scala.concurrent.duration.Duration
 class SearchController @Inject()(bacteriadao: bacteriaDao, virusdao: virusDao, parasitedao: parasiteDao,
                                  fungusdao: fungusDao) extends Controller {
 
+  var option: Array[String] = Array()
 
-  def searchBefore(input:String) = Action { implicit request =>
+
+  def searchBefore(input: String) = Action { implicit request =>
     Ok(views.html.english.search.search(input))
   }
 
@@ -32,63 +34,63 @@ class SearchController @Inject()(bacteriadao: bacteriaDao, virusdao: virusDao, p
     input.replaceAll("(?i)" + key, "<span style='color:red;'>" + value + "</span>")
   }
 
-  def searchBacteria(input: String) : Seq[JsObject] = {
+  def searchBacteria(input: String): Seq[JsObject] = {
     val keys = input.trim.split(" ")
 
     val r = Await.result(bacteriadao.searchByLike(keys.head), Duration.Inf)
 
-    val flt = r.map(x=> transForm.transBacteriaRow(x)).map(y => ((y.id.toInt, y.name), Array(y.name, y.order, y.family, y.genus,
-      y.species, y.tranRoute, y.infectiveDose, y.survivalCondition, y.isSanitizer, y.deathRate,y.isMedicine,y.isVaccine)))
+    val flt = r.map(x => transForm.transBacteriaRow(x)).map(y => ((y.id.toInt, y.name), Array(y.name, y.order, y.family, y.genus,
+      y.species, y.tranRoute, y.infectiveDose, y.survivalCondition, y.isSanitizer, y.deathRate, y.isMedicine, y.isVaccine)))
 
 
-    val rows = getSearchResult(flt, input,"bacteria")
+    val rows = getSearchResult(flt, input, "bacteria")
     rows
   }
 
-  def searchVirus(input: String) : Seq[JsObject] = {
+  def searchVirus(input: String): Seq[JsObject] = {
     val keys = input.trim.split(" ")
 
     val r = Await.result(virusdao.searchByLike(keys.head), Duration.Inf)
 
-    val flt = r.map(x=> transForm.transVirusRow(x)).map(y => ((y.id.toInt, y.name), Array(y.name, y.order, y.family, y.genus,
-      y.species, y.tranRoute, y.infectiveDose, y.survivalCondition, y.isSanitizer, y.deathRate,y.isMedicine,y.isVaccine)))
+    val flt = r.map(x => transForm.transVirusRow(x)).map(y => ((y.id.toInt, y.name), Array(y.name, y.order, y.family, y.genus,
+      y.species, y.tranRoute, y.infectiveDose, y.survivalCondition, y.isSanitizer, y.deathRate, y.isMedicine, y.isVaccine)))
 
 
-    val rows = getSearchResult(flt, input,"virus")
+    val rows = getSearchResult(flt, input, "virus")
     rows
   }
 
-  def searchFungus(input: String) : Seq[JsObject] = {
+  def searchFungus(input: String): Seq[JsObject] = {
     val keys = input.trim.split(" ")
     val r = Await.result(fungusdao.searchByLike(keys.head), Duration.Inf)
 
-    val flt = r.map(x=> transForm.transFungusRow(x)).map(y => ((y.id.toInt, y.name), Array(y.name, y.order, y.family, y.genus,
-      y.species, y.tranRoute, y.infectiveDose, y.survivalCondition, y.isSanitizer, y.deathRate,y.isMedicine,y.isVaccine)))
+    val flt = r.map(x => transForm.transFungusRow(x)).map(y => ((y.id.toInt, y.name), Array(y.name, y.order, y.family, y.genus,
+      y.species, y.tranRoute, y.infectiveDose, y.survivalCondition, y.isSanitizer, y.deathRate, y.isMedicine, y.isVaccine)))
 
 
-    val rows = getSearchResult(flt, input,"fungus")
+    val rows = getSearchResult(flt, input, "fungus")
     rows
   }
 
-  def searchParasite(input: String) : Seq[JsObject] = {
+  def searchParasite(input: String): Seq[JsObject] = {
     val keys = input.trim.split(" ")
 
     val r = Await.result(parasitedao.searchByLike(keys.head), Duration.Inf)
 
 
-    val flt = r.map(x=> transForm.transParasiteRow(x)).map(y => ((y.id.toInt, y.name), Array(y.name, y.order, y.family, y.genus,
-      y.species, y.tranRoute, y.infectiveDose, y.survivalCondition, y.isSanitizer, y.deathRate,y.isMedicine,y.isVaccine)))
+    val flt = r.map(x => transForm.transParasiteRow(x)).map(y => ((y.id.toInt, y.name), Array(y.name, y.order, y.family, y.genus,
+      y.species, y.tranRoute, y.infectiveDose, y.survivalCondition, y.isSanitizer, y.deathRate, y.isMedicine, y.isVaccine)))
 
 
-    val rows = getSearchResult(flt, input,"parasite")
+    val rows = getSearchResult(flt, input, "parasite")
     rows
   }
 
 
-  def getSearchResult(flts: Seq[((Int, String), Array[String])], input: String,tp:String): Seq[JsObject] = {
+  def getSearchResult(flts: Seq[((Int, String), Array[String])], input: String, tp: String): Seq[JsObject] = {
 
-    val option = Array("名称", "目", "科", "属", "种", "传播途径", "感染剂量", "体外存活条件", "有效消毒剂", "预后/死亡率",
-      "有效治疗药物","疫苗")
+    /*    val option = Array("名称", "目", "科", "属", "种", "传播途径", "感染剂量", "体外存活条件", "有效消毒剂", "预后/死亡率",
+          "有效治疗药物","疫苗")*/
 
     var results = Array[((Int, String), Int)]()
 
@@ -136,7 +138,7 @@ class SearchController @Inject()(bacteriadao: bacteriaDao, virusdao: virusDao, p
         Json.obj("option" -> option(z._2), "result" -> resu)
       }
 
-      Json.obj("id" -> y._1._1, "name" -> y._1._2, "type" -> tp,"result" -> re)
+      Json.obj("id" -> y._1._1, "name" -> y._1._2, "type" -> tp, "result" -> re)
     }.toSeq
 
 
@@ -144,9 +146,17 @@ class SearchController @Inject()(bacteriadao: bacteriaDao, virusdao: virusDao, p
   }
 
 
-  def search(input:String) = Action{implicit request=>
+  def search(input: String) = Action { implicit request =>
 
-    val json =  searchBacteria(input) ++ searchVirus(input) ++ searchFungus(input) ++ searchParasite(input)
+    if (request.toString().contains("chinese")) {
+      option = Array("名称", "目", "科", "属", "种", "传播途径", "感染剂量", "体外存活条件", "有效消毒剂", "预后/死亡率",
+        "有效治疗药物", "疫苗")
+    } else {
+      option = Array("Name", "Order", "Family", "Genus", "Species", "route of transmission", "Infective dose",
+        "Vitro survival condition", "Effective disinfectant", "Mortality rate", "Effective therapeutic agent", "Vaccine")
+    }
+
+    val json = searchBacteria(input) ++ searchVirus(input) ++ searchFungus(input) ++ searchParasite(input)
 
     Ok(Json.toJson(json))
   }

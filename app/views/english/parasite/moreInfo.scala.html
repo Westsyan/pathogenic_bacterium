@@ -1,6 +1,6 @@
 @import utils.parasiteData
 @(parasite: parasiteData)(implicit session: Session)
-@english.home.main("") {
+@english.home.main("Parasite Information") {
 
 
     <style>
@@ -28,84 +28,84 @@
             <tbody id="info">
 
                 <tr>
-                    <th>名称</th>
+                    <th>Name</th>
                     <td>@parasite.name</td>
                 </tr>
 
                 <tr>
-                    <th>中文名</th>
+                    <th>Chinese</th>
                     <td>@parasite.chinese</td>
                 </tr>
 
                 <tr>
-                    <th>目（order）</th>
+                    <th>Order</th>
                     <td>@parasite.order</td>
                 </tr>
 
                 <tr>
-                    <th>科（family）</th>
+                    <th>Family</th>
                     <td>@parasite.family</td>
                 </tr>
 
                 <tr>
-                    <th>属（genus）</th>
+                    <th>Genus</th>
                     <td>@parasite.genus</td>
                 </tr>
 
                 <tr>
-                    <th>种（species）</th>
+                    <th>Species</th>
                     <td>@parasite.species</td>
                 </tr>
 
                     <tr>
-                        <th>是否感染人</th>
+                        <th>Infected humans</th>
                         <td>@parasite.isPeople</td>
                     </tr>
 
 
                     <tr>
-                        <th>是否感染动物</th>
+                        <th>Infected animals</th>
                         <td>@parasite.isAnimal</td>
                     </tr>
 
 
                     <tr>
-                        <th>是否感染植物</th>
+                        <th>Infected plants</th>
                         <td>@parasite.isPlant</td>
                     </tr>
 
                     <tr>
-                        <th>传播途径</th>
+                        <th>Route of transmission</th>
                         <td>@parasite.tranRoute</td>
                     </tr>
 
                     <tr>
-                        <th>感染剂量</th>
+                        <th>Infective dose</th>
                         <td>@parasite.infectiveDose</td>
                     </tr>
 
                     <tr>
-                        <th>体外存活条件</th>
+                        <th>Vitro survival condition</th>
                         <td>@parasite.survivalCondition</td>
                     </tr>
 
                     <tr>
-                        <th>有效消毒剂</th>
+                        <th>Effective disinfectant</th>
                         <td>@parasite.isSanitizer</td>
                     </tr>
 
                     <tr>
-                        <th>预后/死亡率</th>
+                        <th>Mortality rate</th>
                         <td>@parasite.deathRate</td>
                     </tr>
 
                     <tr>
-                        <th>有效治疗药物</th>
+                        <th>Effective therapeutic agent</th>
                         <td>@parasite.isMedicine</td>
                     </tr>
 
                     <tr>
-                        <th>疫苗</th>
+                        <th>Vaccine</th>
                         <td>@parasite.isVaccine</td>
                     </tr>
 

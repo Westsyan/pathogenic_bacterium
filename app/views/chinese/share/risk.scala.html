@@ -1,0 +1,348 @@
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">是否感染人</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="isPeople" id="isPeople">
+            <option value="未知">未知</option>
+            <option value="是">是</option>
+            <option value="否">否</option>
+        </select>
+    </div>
+</div>
+
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">是否感染动物</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="isAnimal" id="isAnimal">
+            <option value="未知">未知</option>
+            <option value="是">是</option>
+            <option value="否">否</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">是否感染植物</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="isPlant" id="isPlant">
+            <option value="未知">未知</option>
+            <option value="是">是</option>
+            <option value="否">否</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-12"></div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">传播途径</label>
+    <div class="col-sm-7">
+        <textarea class="form-control" rows="4" name="tranRoute" id="tranRoute"></textarea>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">感染剂量</label>
+    <div class="col-sm-7">
+        <textarea class="form-control" rows="4" name="infectiveDose" id="infectiveDose"></textarea>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">体外存活条件</label>
+    <div class="col-sm-7">
+        <textarea class="form-control" rows="4" name="survivalCondition" id="survivalCondition"></textarea>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">有效消毒剂</label>
+    <div class="col-sm-7">
+        <textarea class="form-control" rows="4" name="isSanitizer" id="isSanitizer"></textarea>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">预后/死亡率</label>
+    <div class="col-sm-7">
+        <textarea class="form-control" rows="4" name="deathRate" id="deathRate"></textarea>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">有效治疗药物</label>
+    <div class="col-sm-7">
+        <textarea class="form-control" rows="4" name="isMedicine" id="isMedicine"></textarea>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">疫苗</label>
+    <div class="col-sm-7">
+        <textarea class="form-control" rows="4" name="isVaccine" id="isVaccine"></textarea>
+    </div>
+</div>
+
+<div class="form-group col-sm-12"></div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">中国（2006）</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="chinaRisk" id="chinaRisk">
+            <option value=" "> </option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">注释</label>
+    <div class="col-sm-7">
+        <input class="form-control" name="chinaNotes" id="chinaNotes">
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">美国 NIH (2016)</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="usanihRisk" id="usanihRisk">
+            <option value=" "> </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">注释</label>
+    <div class="col-sm-7">
+        <input class="form-control" name="usanihNotes" id="usanihNotes">
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">美国 BMBL (2009)*</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="usabmblRisk" id="usabmblRisk">
+            <option value=" "> </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">注释</label>
+    <div class="col-sm-7">
+        <input class="form-control" name="usabmblNotes" id="usabmblNotes">
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">澳大利亚/新西兰 (2010)</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="australiaNewzealandRisk" id="australiaNewzealandRisk">
+            <option value=" "> </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">注释</label>
+    <div class="col-sm-7">
+        <input class="form-control" name="australiaNewzealandNotes" id="australiaNewzealandNotes">
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">比利时 (2008)</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="belgiumRisk" id="belgiumRisk">
+            <option value=" "> </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">注释</label>
+    <div class="col-sm-7">
+        <input class="form-control" name="belgiumNotes" id="belgiumNotes">
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">加拿大 (2015)</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="canadaRisk" id="canadaRisk">
+            <option value=" "> </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">注释</label>
+    <div class="col-sm-7">
+        <input class="form-control" name="canadaNotes" id="canadaNotes">
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">欧盟 (2000)</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="euRisk" id="euRisk">
+            <option value=" "> </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">注释</label>
+    <div class="col-sm-7">
+        <input class="form-control" name="euNotes" id="euNotes">
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">德国 (2013)</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="germanyRisk" id="germanyRisk">
+            <option value=" "> </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">注释</label>
+    <div class="col-sm-7">
+        <input class="form-control" name="germanyNotes" id="germanyNotes">
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">日本</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="japanRisk" id="japanRisk">
+            <option value=" "> </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">注释</label>
+    <div class="col-sm-7">
+        <input class="form-control" name="japanNotes" id="japanNotes">
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">新加坡</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="singaporeRisk" id="singaporeRisk">
+            <option value=" "> </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">注释</label>
+    <div class="col-sm-7">
+        <input class="form-control" name="singaporeNotes" id="singaporeNotes">
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">瑞士</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="switzerlandRisk" id="switzerlandRisk">
+            <option value=" "> </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">注释</label>
+    <div class="col-sm-7">
+        <input class="form-control" name="switzerlandNotes" id="switzerlandNotes">
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">英国 (2013)</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="ukRisk" id="ukRisk">
+            <option value=" "> </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">注释</label>
+    <div class="col-sm-7">
+        <input class="form-control" name="ukNotes" id="ukNotes">
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">Select Agent CDC</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="selectAgentCdc" id="selectAgentCdc">
+            <option value="是">是</option>
+            <option value="否">否</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group col-sm-6">
+    <label class="control-label col-sm-5">Select Agent USDA</label>
+    <div class="col-sm-7">
+        <select class="form-control" name="selectAgentUsda" id="selectAgentUsda">
+            <option value="是">是</option>
+            <option value="否">否</option>
+        </select>
+    </div>
+</div>
+
+

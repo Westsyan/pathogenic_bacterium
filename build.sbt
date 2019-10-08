@@ -26,6 +26,16 @@ libraryDependencies += "org.apache.commons" % "commons-lang3" % "3.6"
 
 libraryDependencies += "org.apache.commons" % "commons-math3" % "3.6.1"
 
+// https://mvnrepository.com/artifact/org.apache.poi/poi
+libraryDependencies += "org.apache.poi" % "poi" % "4.0.1"
+
+// https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml
+libraryDependencies += "org.apache.poi" % "poi-ooxml" % "4.0.1"
+
+
+
+
+
 
 
       

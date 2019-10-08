@@ -1,0 +1,285 @@
+@()(implicit session: Session)
+@english.home.main("SVM ") {
+
+    <style>
+            td {
+                text-align: center;
+            }
+
+            th {
+                text-align: center;
+            }
+    </style>
+
+    <div class="row">
+        <div class="form-group col-sm-12">
+            <h2 class="page-heading"
+            style="text-align: left;
+                border-bottom: 5px solid #e9f3f4;
+                letter-spacing: 0px"><font style="font-size: 30px">SVM</font></h2>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="form-group col-sm-12" style="font-weight: bold;font-size: 14px;">
+
+            <p>For the pathogenic microorganisms not included in the library, the hazard level can be predicted according to the characteristics of the pathogenic microorganisms.</p>
+            <p>This prediction model is established based on the known pathogen hazard level and its characteristics of pathogenic microorganisms in various countries, and the uncollected pathogenic microorganisms in the library can be evaluated according to their characteristics
+                The hazard level of different countries will be given. However, the predicted results are not equivalent to the hazard level of each country, only for reference.</p>
+
+        </div>
+    </div>
+
+    <form class="registration-form form-horizontal" id="form"
+    accept-charset="UTF-8" method="post">
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">Respiratory (droplet) transmission:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="is_breath" id="is_breath">
+                        <option value="未知">
+                            Unknown</option>
+                        <option value="是">
+                            Yes</option>
+                        <option value="否">
+                            No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">Horizontal transmission:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="is_people" id="is_people">
+                        <option value="未知">
+                            Unknown</option>
+                        <option value="是">
+                            Yes</option>
+                        <option value="否">
+                            No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">Infectious dose less than 100 pathogens:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="is_100" id="is_100">
+                        <option value="未知">
+                            Unknown</option>
+                        <option value="是">
+                            Yes</option>
+                        <option value="否">
+                            No</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">Pathogens can survive more than 24 hours under natural conditions:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="is_24" id="is_24">
+                        <option value="未知">
+                            Unknown</option>
+                        <option value="是">
+                            Yes</option>
+                        <option value="否">
+                            No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">No effective treatments:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="is_medicine" id="is_medicine">
+                        <option value="未知">
+                            Unknown</option>
+                        <option value="是">
+                            Yes</option>
+                        <option value="否">
+                            No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">No effective preventive vaccine:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="is_vaccine" id="is_vaccine">
+                        <option value="是">
+                            YES</option>
+                        <option value="否">
+                            NO</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="form-group col-sm-8">
+                <label class="control-label col-sm-5">Mortality rate（%）:</label>
+                <div class="col-sm-7">
+                    <select class="form-control" name="death" id="death">
+                        <option value="<1">< 1%</option>
+                        <option value="1-10">1%-10%</option>
+                        <option value="11-20">11%-20%</option>
+                        <option value="21-30">21%-30%</option>
+                        <option value="31-40">31%-40%</option>
+                        <option value="41-50">41%-50%</option>
+                        <option value="51-60">51%-60%</option>
+                        <option value="61-70">61%-70%</option>
+                        <option value="71-80">71%-80%</option>
+                        <option value="81-90">81%-90%</option>
+                        <option value="91-100">91%-100%</option>
+                        <option value="100">100%</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="actions col-sm-offset-3 col-sm-2">
+                <button type="button" class="btn btn-primary" style="width: 90%;" id="search" onclick="myAnalysis()">
+                    Analysis</button>
+            </div>
+        </div>
+    </form>
+
+
+    <div id="result" style="display: none;">
+        <hr>
+        <table class="table table-bordered table-hover" id="table">
+            <thead>
+                <tr>
+                    <th data-field="state">State</th>
+                    <th data-field="china">CHINA（2006）</th>
+                    <th data-field="usa_nih">USA NIH (2016)</th>
+                    <th data-field="usa_bmbl">USA BMBL(2009)</th>
+                    <th data-field="australia">Australia/New Zealand (2010)</th>
+                    <th data-field="belgium">Belgium (2008)</th>
+                    <th data-field="canada">Canada(2015)</th>
+                    <th data-field="eu">EU(2000)</th>
+                    <th data-field="germany">Germany (2013)</th>
+                    <th data-field="japan">Japan</th>
+                    <th data-field="singapore">Singapore</th>
+                    <th data-field="switzerland">Switzerland</th>
+                    <th data-field="uk">UK (2013)</th>
+
+
+                </tr>
+            </thead>
+        </table>
+
+
+
+        <br>
+
+        <div id="charts" style="border: 1px solid #ddd;
+            padding-top: 20px">
+            <br>
+        </div>
+
+        <br>
+        @english.share.china()
+        <br>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <script src="@routes.Assets.at("Highcharts-6.0.1/code/highcharts.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("Highcharts-6.0.1/code/highcharts-more.js")" type="text/javascript"></script>
+    <script src="@routes.Assets.at("Highcharts-6.0.1/code/modules/exporting.js")" type="text/javascript"></script>
+    <script>
+
+            $(function () {
+                $("#table").bootstrapTable();
+            });
+
+            var datas = [];
+
+
+            function myAnalysis() {
+                var index = layer.load(1);
+                $.ajax({
+                    url: "@routes.BacteriaController.runRandomForest()",
+                    type: "get",
+                    dataType: "json",
+                    data: $("#form").serialize(),
+                    success: function (x) {
+                        layer.close(index);
+                        $("#table").bootstrapTable('load', [x.table]);
+                        datas = x.risk;
+                        column();
+                        $("#result").show();
+                    }
+                })
+            }
+
+
+            function column() {
+                Highcharts.chart('charts', {
+                    chart: {
+                        type: 'column'
+                    },
+                    credits: {
+                        enabled: false
+                    },
+                    title: {
+                        text: "Risk levels of each country"
+                    },
+                    xAxis: {
+                        title: {
+                            text: "Country"
+                        },
+                        categories: ['CHINA（2006）', 'USA NIH (2016)', 'USA BMBL(2009)', 'Australia/New Zealand (2010)',
+                            'Belgium (2008)', 'Canada (2015)', 'EU (2000)', 'Germany (2013)', 'Japan', 'Singapore',
+                            'Switzerland', 'UK (2013)'],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        title: {
+                            text: "Risk levels"
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    series: [{
+                        data: datas,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.y:.0f}'
+                        },
+                        tooltip: {
+                            pointFormat: '风险等级： <b> {point.y}</b><br>'
+                        },
+                        colorByPoint: true
+                    }]
+                });
+            }
+
+
+    </script>
+
+
+}

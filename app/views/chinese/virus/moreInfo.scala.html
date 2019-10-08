@@ -1,0 +1,258 @@
+@import utils.virusData
+@(virus: virusData)(implicit session: Session)
+@chinese.home.main("") {
+
+
+    <style>
+            th {
+                width: 25%;
+            }
+
+            .notes {
+                margin-left: 100px;
+                margin-right: 10px;
+            }
+    </style>
+
+    <div class="row">
+        <div class="form-group col-sm-12">
+            <h2 class="page-heading"
+            style="text-align: left;
+                border-bottom: 5px solid #e9f3f4">病毒信息</h2>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered" style="table-layout: fixed;
+            word-wrap: break-word">
+            <tbody id="info">
+
+                <tr>
+                    <th>名称</th>
+                    <td><i>@virus.name</i></td>
+                </tr>
+
+                <tr>
+                    <th>中文名</th>
+                    <td>@virus.chinese</td>
+                </tr>
+
+                <tr>
+                    <th>目</th>
+                    <td>@virus.order</td>
+                </tr>
+
+                <tr>
+                    <th>科</th>
+                    <td>@virus.family</td>
+                </tr>
+
+                <tr>
+                    <th>亚科</th>
+                    <td>@virus.subfamily</td>
+                </tr>
+
+                <tr>
+                    <th>属</th>
+                    <td>@virus.genus</td>
+                </tr>
+
+                <tr>
+                    <th>种</th>
+                    <td>@virus.species</td>
+                </tr>
+
+                <tr>
+                    <th>基因组构成</th>
+                    <td>@virus.genome_composition</td>
+                </tr>
+
+                <tr>
+                    <th>是否感染人</th>
+                    <td>@virus.isPeople</td>
+                </tr>
+
+
+                <tr>
+                    <th>是否感染动物</th>
+                    <td>@virus.isAnimal</td>
+                </tr>
+
+
+                <tr>
+                    <th>是否感染植物</th>
+                    <td>@virus.isPlant</td>
+                </tr>
+
+                <tr>
+                    <th>传播途径</th>
+                    <td>@virus.tranRoute</td>
+                </tr>
+
+                <tr>
+                    <th>感染剂量</th>
+                    <td>@virus.infectiveDose</td>
+                </tr>
+
+                <tr>
+                    <th>体外存活条件</th>
+                    <td>@virus.survivalCondition</td>
+                </tr>
+
+                <tr>
+                    <th>有效消毒剂</th>
+                    <td>@virus.isSanitizer</td>
+                </tr>
+
+                <tr>
+                    <th>预后/死亡率</th>
+                    <td>@virus.deathRate</td>
+                </tr>
+
+                <tr>
+                    <th>有效治疗药物</th>
+                    <td>@virus.isMedicine</td>
+                </tr>
+
+                <tr>
+                    <th>疫苗</th>
+                    <td>@virus.isVaccine</td>
+                </tr>
+
+                <tr>
+                    <th>中国（2006）</th>
+                    <td>@virus.chinaRisk
+                        @if(!virus.chinaNotes.isEmpty) {
+                            <b class="notes">notes:</b>
+                            @virus.canadaNotes
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>美国 NIH (2016)</th>
+                    <td>@virus.usanihRisk
+                        @if(!virus.usanihNotes.isEmpty) {
+                            <b class="notes">notes:</b>
+                            @virus.usanihNotes
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>美国 NIH (2016)</th>
+                    <td>@virus.usabmblRisk
+                        @if(!virus.usabmblNotes.isEmpty) {
+                            <b class="notes">notes:</b>
+                            @virus.usabmblNotes
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>澳大利亚/新西兰(2010)</th>
+                    <td>@virus.australiaNewzealandRisk
+                        @if(!virus.australiaNewzealandNotes.isEmpty) {
+                            <b class="notes">notes:</b>
+                            @virus.australiaNewzealandNotes
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>比利时(2008)</th>
+                    <td>@virus.belgiumRisk
+                        @if(!virus.belgiumNotes.isEmpty) {
+                            <b class="notes">notes:</b>
+                            @virus.belgiumNotes
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>加拿大(2015)</th>
+                    <td>@virus.canadaRisk
+                        @if(!virus.canadaNotes.isEmpty) {
+                            <b class="notes">notes:</b>
+                            @virus.canadaNotes
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>欧盟(2000)</th>
+                    <td>@virus.euRisk
+                        @if(!virus.euNotes.isEmpty) {
+                            <b class="notes">notes:</b>
+                            @virus.euNotes
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>德国(2013)</th>
+                    <td>@virus.germanyRisk
+                        @if(!virus.germanyNotes.isEmpty) {
+                            <b class="notes">notes:</b>
+                            @virus.germanyNotes
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>日本</th>
+                    <td>@virus.japanRisk
+                        @if(!virus.japanNotes.isEmpty) {
+                            <b class="notes">notes:</b>
+                            @virus.japanNotes
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>新加坡</th>
+                    <td>@virus.singaporeRisk
+                        @if(!virus.singaporeNotes.isEmpty) {
+                            <b class="notes">notes:</b>
+                            @virus.singaporeNotes
+                        }
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <th>瑞士</th>
+                    <td>@virus.switzerlandRisk
+                        @if(!virus.switzerlandNotes.isEmpty) {
+                            <b class="notes">notes:</b>
+                            @virus.switzerlandNotes
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>英国(2013)</th>
+                    <td>@virus.ukRisk
+                        @if(!virus.ukNotes.isEmpty) {
+                            <b class="notes">notes:</b>
+                            @virus.ukNotes
+                        }
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>选择 CDC 代理</th>
+                    <td>@virus.selectAgentCdc</td>
+                </tr>
+
+                <tr>
+                    <th>选择 USDA 代理</th>
+                    <td>@virus.selectAgentUsda</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+}

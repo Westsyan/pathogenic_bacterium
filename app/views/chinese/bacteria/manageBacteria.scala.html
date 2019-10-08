@@ -1,0 +1,46 @@
+@()(implicit session: Session)
+@chinese.home.main("管理细菌信息"){
+
+
+
+  <div class="row">
+    <div class="form-group col-sm-12">
+      <h2 class="page-heading"
+      style="text-align: left;
+        border-bottom: 5px solid #e9f3f4">管理细菌信息</h2>
+    </div>
+  </div>
+
+
+  <div id="showTable">
+    @chinese.share.title()
+
+    <div id="toolbar"></div>
+
+    <table class="display table table-bordered" id="table" data-pagination="true" data-search="true"
+    data-toolbar="#toolbar" data-page-list="[10, 25, 50, 100, all]" data-search-align="left" data-multiple-search="true"
+    data-show-export="true" data-export-types="['excel','txt']" data-export-data-type="all"
+    >
+      @chinese.bacteria.table()
+    </table>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <script src="@routes.Assets.at("javascripts/bacteria_ch.js")" type="text/javascript"></script>
+
+
+  <script>
+
+    $(function () {
+
+      loadBacteria();
+
+    });
+
+  </script>
+
+
+}

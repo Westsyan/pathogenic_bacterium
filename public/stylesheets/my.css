@@ -1089,5 +1089,7 @@ button:focus, input[type="submit"] {
 .index-icon{
     width: 100px;
     height: 100px;
-    margin-top: 20px;"
+    margin-top: 20px;
+    border-radius: 15px
+;
 }

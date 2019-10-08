@@ -4,13 +4,14 @@
 
 # Home page
 GET           /                                                   controllers.IndexController.home
+GET           /english/Home/index                                 controllers.IndexController.index
 
 GET           /english/Bacteria/insertBacteria                    controllers.BacteriaController.insertBacteria
 GET           /english/Becteria/getAllInfo                        controllers.BacteriaController.getAllInfo
-GET           /english/Becteria/searchByTaxBefore                 controllers.BacteriaController.searchByTaxBefore
+GET           /english/Bacteria/searchByTaxBefore                 controllers.BacteriaController.searchByTaxBefore
 GET           /english/Becteria/getAllSelect                      controllers.BacteriaController.getAllSelect
 GET           /english/Becteria/searchByTax                       controllers.BacteriaController.searchByTax
-GET           /english/Becteria/moreInfo                          controllers.BacteriaController.moreInfo(id:Int)
+GET           /english/Bacteria/moreInfo                          controllers.BacteriaController.moreInfo(id:Int)
 POST          /english/Becteria/getByOrder                        controllers.BacteriaController.getByOrder(order:String)
 POST          /english/Becteria/getByFamily                       controllers.BacteriaController.getByFamily(family:String)
 POST          /english/Becteria/getByGenus                        controllers.BacteriaController.getByGenus(genus:String)
@@ -22,13 +23,12 @@ POST          /english/admin/Bacteria/updateBacteria              controllers.Ba
 DELETE        /english/admin/Bacteria/deleteBacteria              controllers.BacteriaController.deleteBacteria(id:Int)
 
 GET           /english/login                                      controllers.IndexController.login
+GET           /chinese/login                                      controllers.IndexController.login
 
 POST          /english/background/updatePassword                  controllers.IndexController.updatePassword
 GET           /english/background/getPassword                     controllers.IndexController.getPassword(password:String)
 
 GET           /english/Virus/insertVirus                          controllers.VirusController.insertVirus
-POST          /english/Virus/getTreeJson                          controllers.VirusController.getTreeJson
-GET           /english/Virus/getInfoById                          controllers.VirusController.getInfoById(id:Int)
 GET           /english/Virus/getAllVirus                          controllers.VirusController.getAllVirus
 GET           /english/Virus/getAllOrder                          controllers.VirusController.getAllOrder
 GET           /english/Virus/getAllFamily                         controllers.VirusController.getAllFamily
@@ -44,23 +44,22 @@ GET           /english/admin/Virus/updateBefore                   controllers.Vi
 POST          /english/admin/Virus/updateVirus                    controllers.VirusController.updateVirus(id:String)
 DELETE        /english/admin/Virus/deleteVirus                    controllers.VirusController.deleteVirus(id:Int)
 
-
 GET           /english/background/toAdmin                         controllers.IndexController.toAdmin
-GET           /english/toLogin                                    controllers.IndexController.toLogin
-GET           /english/logout                                     controllers.IndexController.logout
+GET           /english/login/toLogin                              controllers.IndexController.toLogin
+GET           /english/logout                                     controllers.IndexController.logout(language:String)
 
 GET           /english/background/toPassword                      controllers.IndexController.toPassword
 
-
-GET           /english/Bacteria/toBrowse                          controllers.BacteriaController.toBrowse
+GET           /english/Bacteria/Browse                            controllers.BacteriaController.browse
 GET           /english/Bacteria/toRandomForest                    controllers.BacteriaController.toRandomForest
 GET           /english/Bacteria/randomForest                      controllers.BacteriaController.runRandomForest
 
 
-GET           /english/Virus/toTree                               controllers.VirusController.toTree
-GET           /english/Virus/toBrowse                             controllers.VirusController.toBrowse
-GET           /english/Virus/toSearchByTax                        controllers.VirusController.toSearchByTax
+GET           /english/Virus/Browse                               controllers.VirusController.browse
+GET           /english/Virus/searchByTaxBefore                    controllers.VirusController.searchByTaxBefore
 GET           /english/Virus/moreInfo                             controllers.VirusController.moreInfo(id:Int)
+
+
 
 GET           /english/Parasite/getAllParasite                    controllers.ParasiteController.getAllParasite
 GET           /english/Parasite/Browse                            controllers.ParasiteController.browse
@@ -94,7 +93,7 @@ DELETE        /english/admin/Fungus/deleteFungus                  controllers.Fu
 
 GET           /english/admin/Risk/meanDecreaseGini                controllers.RiskController.meanDecreaseGini
 POST          /english/admin/Risk/getGiniJson                     controllers.RiskController.getGiniJson
-
+GET           /english/Risk/svmBefore                             controllers.RiskController.svmBefore
 
 GET           /english/Tree/tree                                  controllers.TreeController.tree
 POST          /english/Tree/getTreeJson                           controllers.TreeController.getTreeJson
@@ -103,6 +102,47 @@ GET           /english/Tree/getInfoById                           controllers.Tr
 GET           /english/Search/searchBefore                        controllers.SearchController.searchBefore(input:String)
 POST          /english/Search/search                              controllers.SearchController.search(input:String)
 
+
+GET           /chinese/background/toPassword                      controllers.ChineseController.toPassword
+GET           /chinese/admin/Risk/meanDecreaseGini                controllers.ChineseController.meanDecreaseGini
+GET           /chinese/Tree/tree                                  controllers.ChineseController.tree
+GET           /chinese/Home/index                                 controllers.ChineseController.index
+GET           /chinese/login/toLogin                              controllers.ChineseController.toLogin
+GET           /chinese/Search/searchBefore                        controllers.ChineseController.searchBefore(input:String)
+POST          /chinese/Search/search                              controllers.SearchController.search(input:String)
+
+
+
+GET           /chinese/Bacteria/Browse                            controllers.BacteriaCHController.browse
+GET           /chinese/Bacteria/searchByTaxBefore                 controllers.BacteriaCHController.searchByTaxBefore
+GET           /chinese/Bacteria/toRandomForest                    controllers.BacteriaCHController.toRandomForest
+GET           /chinese/Bacteria/moreInfo                          controllers.BacteriaCHController.moreInfo(id:Int)
+GET           /chinese/admin/Bacteria/uploadBefore                controllers.BacteriaCHController.uploadBefore
+GET           /chinese/admin/Bacteria/manageBacteriaBefore        controllers.BacteriaCHController.manageBacteriaBefore
+GET           /chinese/admin/Bacteria/updateBefore                controllers.BacteriaCHController.updateBefore(id:Int)
+
+GET           /chinese/Virus/Browse                               controllers.VirusCHController.browse
+GET           /chinese/Virus/searchByTaxBefore                    controllers.VirusCHController.searchByTaxBefore
+GET           /chinese/Virus/moreInfo                             controllers.VirusCHController.moreInfo(id:Int)
+GET           /chinese/admin/Virus/manageBefore                   controllers.VirusCHController.manageBefore
+GET           /chinese/admin/Virus/uploadBefore                   controllers.VirusCHController.uploadBefore
+GET           /chinese/admin/Virus/updateBefore                   controllers.VirusCHController.updateBefore(id:Int)
+
+GET           /chinese/Fungus/Browse                              controllers.FungusCHController.browse
+GET           /chinese/Fungus/searchByTaxBefore                   controllers.FungusCHController.searchByTaxBefore
+GET           /chinese/Fungus/moreInfo                            controllers.FungusCHController.moreInfo(id:Int)
+GET           /chinese/admin/Fungus/manageBefore                  controllers.FungusCHController.manageBefore
+GET           /chinese/admin/Fungus/uploadBefore                  controllers.FungusCHController.uploadBefore
+GET           /chinese/admin/Fungus/updateBefore                  controllers.FungusCHController.updateBefore(id:Int)
+
+GET           /chinese/Parasite/Browse                            controllers.ParasiteCHController.browse
+GET           /chinese/Parasite/searchByTaxBefore                 controllers.ParasiteCHController.searchByTaxBefore
+GET           /chinese/Parasite/moreInfo                          controllers.ParasiteCHController.moreInfo(id:Int)
+GET           /chinese/admin/Parasite/manageBefore                controllers.ParasiteCHController.manageBefore
+GET           /chinese/admin/Parasite/uploadBefore                controllers.ParasiteCHController.uploadBefore
+GET           /chinese/admin/Parasite/updateBefore                controllers.ParasiteCHController.updateBefore(id:Int)
+
+GET           /chinese/Tree/tree                                  controllers.TreeController.treeCH
 
 
 # Map static resources from the /public folder to the /assets URL path
